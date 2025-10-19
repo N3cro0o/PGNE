@@ -11,8 +11,21 @@ config_version=5
 [application]
 
 config/name="PGNE"
+run/main_scene="uid://b82tq8ij7xd3a"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GM="*res://Masters/GM/gm.tscn"
+PM="*res://Masters/PM/pm.tscn"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=480
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_width"
 
 [dotnet]
 
@@ -20,4 +33,6 @@ project/assembly_name="PGNE"
 
 [rendering]
 
-renderer/rendering_method="mobile"
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"

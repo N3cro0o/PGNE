@@ -1,0 +1,146 @@
+[gd_scene load_steps=3 format=3 uid="uid://yb8q31wlggo8"]
+
+[ext_resource type="Script" uid="uid://dcw8fpqkpkwmr" path="res://Scenes/MainScene/UI/main_game_ui.gd" id="1_a1mol"]
+[ext_resource type="Texture2D" uid="uid://br5doicbce0vs" path="res://icon.svg" id="1_xar6p"]
+
+[node name="MainGameUI" type="Control"]
+z_index = 50
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 480.0
+script = ExtResource("1_a1mol")
+
+[node name="UI" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="Top" type="Control" parent="UI"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TopBG" type="ColorRect" parent="UI/Top"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.27058825)
+
+[node name="TopMargin" type="MarginContainer" parent="UI/Top"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBox" type="HBoxContainer" parent="UI/Top/TopMargin"]
+layout_mode = 2
+
+[node name="QuitBttn" type="Button" parent="UI/Top/TopMargin/HBox"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 28
+text = "Quit"
+icon = ExtResource("1_xar6p")
+icon_alignment = 1
+expand_icon = true
+
+[node name="HPLabel" type="Label" parent="UI/Top/TopMargin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HungriLabel" type="Label" parent="UI/Top/TopMargin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BladderLabel" type="Label" parent="UI/Top/TopMargin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FunLabel" type="Label" parent="UI/Top/TopMargin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Main" type="HBoxContainer" parent="UI"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.5
+
+[node name="Blud" type="Control" parent="UI/Main"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="ColorRect" type="ColorRect" parent="UI/Main"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0, 0, 0, 0.27058825)
+
+[node name="MainMargin" type="MarginContainer" parent="UI/Main/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="VBox" type="VBoxContainer" parent="UI/Main/ColorRect/MainMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AkademykBttn" type="Button" parent="UI/Main/ColorRect/MainMargin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Akademyk"
+
+[node name="SraczBttn" type="Button" parent="UI/Main/ColorRect/MainMargin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Sracz"
+
+[node name="Jadlobttn" type="Button" parent="UI/Main/ColorRect/MainMargin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Jadłodal-nia"
+autowrap_mode = 3
+
+[node name="HomeOfficeBttn" type="Button" parent="UI/Main/ColorRect/MainMargin/VBox"]
+editor_description = "home office is a place for every student retard to chill out, play league and jack off"
+layout_mode = 2
+size_flags_vertical = 3
+text = "Home Office"
+autowrap_mode = 2
+
+[connection signal="pressed" from="UI/Top/TopMargin/HBox/QuitBttn" to="." method="_quit_press"]
+[connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/AkademykBttn" to="." method="_akademyk_press"]
+[connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/SraczBttn" to="." method="_sracz_press"]
+[connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/Jadlobttn" to="." method="_jadlodalnia_press"]
+[connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/HomeOfficeBttn" to="." method="_home_office_press"]

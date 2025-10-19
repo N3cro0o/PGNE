@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://b82tq8ij7xd3a"]
+
+[ext_resource type="Script" uid="uid://b6qd6w2gkyoj6" path="res://Scenes/Menus/MainMenu/main_menu.gd" id="1_tb3ri"]
+[ext_resource type="Texture2D" uid="uid://br5doicbce0vs" path="res://icon.svg" id="1_yo6co"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tb3ri")
+
+[node name="BG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(320, 240)
+texture = ExtResource("1_yo6co")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 50
+
+[node name="BttnBG" type="ColorRect" parent="Margin"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.27058825)
+
+[node name="BttnMargin" type="MarginContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="BttnContainer" type="VBoxContainer" parent="Margin/BttnMargin"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Start" type="Button" parent="Margin/BttnMargin/BttnContainer"]
+layout_mode = 2
+text = "Start"
+
+[node name="Options" type="Button" parent="Margin/BttnMargin/BttnContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Saves" type="Button" parent="Margin/BttnMargin/BttnContainer"]
+layout_mode = 2
+text = "Change Save"
+
+[connection signal="pressed" from="Margin/BttnMargin/BttnContainer/Start" to="." method="_start_button_pressed"]

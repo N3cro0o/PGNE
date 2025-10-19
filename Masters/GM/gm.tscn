@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://mmngd5sx0u81"]
+
+[ext_resource type="Script" uid="uid://dkpyhuovmf1wa" path="res://Masters/GM/gm.gd" id="1_2s2pk"]
+[ext_resource type="PackedScene" uid="uid://b82tq8ij7xd3a" path="res://Scenes/Menus/MainMenu/main_menu.tscn" id="2_vtv0w"]
+[ext_resource type="PackedScene" uid="uid://cr23v8wojtk26" path="res://Scenes/MainScene/main_game.tscn" id="3_50g81"]
+
+[node name="GM" type="Node2D"]
+script = ExtResource("1_2s2pk")
+game_scenes = Array[PackedScene]([ExtResource("2_vtv0w"), ExtResource("3_50g81")])

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr23v8wojtk26"]
+
+[ext_resource type="PackedScene" uid="uid://yb8q31wlggo8" path="res://Scenes/MainScene/UI/main_game_ui.tscn" id="1_027td"]
+[ext_resource type="Script" uid="uid://don2q2j0hm7d5" path="res://Scenes/MainScene/main_game.gd" id="1_jt1fx"]
+[ext_resource type="Texture2D" uid="uid://br5doicbce0vs" path="res://icon.svg" id="1_mulmd"]
+
+[node name="MainGame" type="Node2D"]
+script = ExtResource("1_jt1fx")
+
+[node name="MainGameUI" parent="." instance=ExtResource("1_027td")]
+
+[node name="BG" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.29803923)
+position = Vector2(322.00003, 243.00002)
+scale = Vector2(6.531249, 4.828125)
+texture = ExtResource("1_mulmd")
+
+[connection signal="OnQuitPress" from="MainGameUI" to="." method="quit_button"]

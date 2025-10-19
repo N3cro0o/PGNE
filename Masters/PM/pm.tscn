@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhlgghuolu2yd"]
+
+[ext_resource type="Script" uid="uid://bmuadjhm8bv02" path="res://Masters/PM/pm.gd" id="1_7qu2i"]
+
+[node name="PM" type="Node2D"]
+script = ExtResource("1_7qu2i")
