@@ -13,7 +13,7 @@ config_version=5
 config/name="PGNE"
 run/main_scene="uid://b82tq8ij7xd3a"
 config/features=PackedStringArray("4.5", "Mobile")
-config/icon="res://icon.svg"
+config/icon="res://Sprites/Temp/icon.svg"
 
 [autoload]
 

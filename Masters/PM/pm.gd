@@ -18,28 +18,36 @@ static var instance: PlayerMaster
 
 var health: float = 100:
 	set(hp):
-		if hp >= 0:
-			health = hp
-		else:
+		if hp < 0:
 			health = 0
+		elif hp > max_health:
+			health = max_health
+		else:
+			health = hp
 var hunger: float = 100:
 	set(hg):
-		if hg >= 0:
-			hunger = hg
-		else:
+		if hg < 0:
 			hunger = 0
+		elif hg > max_hunger:
+			hunger = max_hunger
+		else:
+			hunger = hg
 var bladder: float = 100:
 	set(bl):
-		if bl >= 0:
-			bladder = bl
-		else:
+		if bl < 0:
 			bladder = 0
+		elif bl > max_bladder:
+			bladder = max_bladder
+		else:
+			bladder = bl
 var stress: float = 100:
 	set(sr):
-		if sr >= 0:
-			stress = sr
-		else:
+		if sr < 0:
 			stress = 0
+		elif sr > max_stress:
+			stress = max_stress
+		else:
+			stress = sr
 
 #endregion
 
