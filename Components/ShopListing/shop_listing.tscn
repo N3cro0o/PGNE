@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dejmqxbeg2e2s"]
+
+[ext_resource type="Script" uid="uid://cxgkbkyite0v1" path="res://Components/ShopListing/shop_listing.gd" id="1_j5mxj"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_a1mol"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j5mxj"]
+font_size = 24
+
+[node name="ShopListing" type="ColorRect"]
+custom_minimum_size = Vector2(0, 80)
+color = Color(0, 0, 0, 0.27058825)
+script = ExtResource("1_j5mxj")
+
+[node name="Box" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Layout" type="HBoxContainer" parent="Box"]
+layout_mode = 2
+
+[node name="Image" type="TextureRect" parent="Box/Layout"]
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_a1mol")
+expand_mode = 2
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="Box/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 3.0
+label_settings = SubResource("LabelSettings_j5mxj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cost" type="Label" parent="Box/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="Buy" type="Button" parent="Box/Layout"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 24
+text = "BUY"
+
+[connection signal="pressed" from="Box/Layout/Buy" to="." method="_buy_click"]

@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://yb8q31wlggo8"]
+[gd_scene load_steps=5 format=3 uid="uid://yb8q31wlggo8"]
 
 [ext_resource type="Script" uid="uid://dcw8fpqkpkwmr" path="res://Scenes/MainScene/UI/main_game_ui.gd" id="1_a1mol"]
 [ext_resource type="Texture2D" uid="uid://br5doicbce0vs" path="res://Sprites/Temp/icon.svg" id="1_xar6p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_a1mol"]
+font_size = 38
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ryxha"]
 
 [node name="MainGameUI" type="Control"]
 z_index = 50
@@ -9,6 +14,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 480.0
+mouse_filter = 2
 script = ExtResource("1_a1mol")
 
 [node name="UI" type="VBoxContainer" parent="."]
@@ -18,11 +24,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="Top" type="Control" parent="UI"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 1
 
 [node name="TopBG" type="ColorRect" parent="UI/Top"]
 layout_mode = 1
@@ -31,7 +39,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_filter = 1
 color = Color(0, 0, 0, 0.27058825)
 
 [node name="TopMargin" type="MarginContainer" parent="UI/Top"]
@@ -64,40 +72,55 @@ expand_icon = true
 [node name="HPLabel" type="Label" parent="UI/Top/TopMargin/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HungriLabel" type="Label" parent="UI/Top/TopMargin/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="BladderLabel" type="Label" parent="UI/Top/TopMargin/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 0
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="FunLabel" type="Label" parent="UI/Top/TopMargin/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 0
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CansLabel" type="Label" parent="UI/Top/TopMargin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.8
+mouse_filter = 0
+horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Main" type="HBoxContainer" parent="UI"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.5
+mouse_filter = 2
 
 [node name="Blud" type="Control" parent="UI/Main"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 5.0
+mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="UI/Main"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 1
 color = Color(0, 0, 0, 0.27058825)
 
 [node name="MainMargin" type="MarginContainer" parent="UI/Main/ColorRect"]
@@ -139,8 +162,73 @@ size_flags_vertical = 3
 text = "Home Office"
 autowrap_mode = 2
 
+[node name="Shop" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.27058825)
+
+[node name="Margin" type="MarginContainer" parent="Shop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Body" type="VBoxContainer" parent="Shop/Margin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Shop/Margin/Body"]
+layout_mode = 2
+text = "Shop"
+label_settings = SubResource("LabelSettings_a1mol")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Shop/Margin/Body"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ShopTabs" type="TabContainer" parent="Shop/Margin/Body"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ryxha")
+tab_alignment = 1
+current_tab = 0
+
+[node name="Food" type="ScrollContainer" parent="Shop/Margin/Body/ShopTabs"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Box" type="VBoxContainer" parent="Shop/Margin/Body/ShopTabs/Food"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Drip" type="ScrollContainer" parent="Shop/Margin/Body/ShopTabs"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Box" type="VBoxContainer" parent="Shop/Margin/Body/ShopTabs/Drip"]
+layout_mode = 2
+
+[node name="QuitButton" type="Button" parent="Shop/Margin/Body"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Leave"
+
 [connection signal="pressed" from="UI/Top/TopMargin/HBox/QuitBttn" to="." method="_quit_press"]
 [connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/AkademykBttn" to="." method="_akademyk_press"]
 [connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/SraczBttn" to="." method="_sracz_press"]
 [connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/Jadlobttn" to="." method="_jadlodalnia_press"]
 [connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/HomeOfficeBttn" to="." method="_home_office_press"]
+[connection signal="pressed" from="Shop/Margin/Body/QuitButton" to="." method="shop_quit"]

@@ -7,6 +7,11 @@ class_name MainGame extends Node2D
 
 #endregion
 
+func _physics_process(_delta: float) -> void:
+	if randf() > 0.9995: # 0.9995 ^ 20 = ~ 0.99
+		GameMaster.instance.tin_cans += 1
+		print("New can")
+
 #region Functional functions
 
 func add_hp(hp: int):

@@ -5,7 +5,9 @@ static var instance: GameMaster
 #region Variables
 
 @export var game_scenes: Array[PackedScene]
+@export var shop_items: Array[ShopItem]
 
+var tin_cans := 0
 var in_game := false
 
 #endregion

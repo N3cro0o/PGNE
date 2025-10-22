@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr23v8wojtk26"]
+[gd_scene load_steps=7 format=3 uid="uid://cr23v8wojtk26"]
 
 [ext_resource type="PackedScene" uid="uid://yb8q31wlggo8" path="res://Scenes/MainScene/UI/main_game_ui.tscn" id="1_027td"]
 [ext_resource type="Script" uid="uid://don2q2j0hm7d5" path="res://Scenes/MainScene/main_game.gd" id="1_jt1fx"]
@@ -7,24 +7,14 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jt1fx"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_y12b8"]
+font_size = 32
+
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_jt1fx")
 
-[node name="MainGameUI" parent="." instance=ExtResource("1_027td")]
-mouse_filter = 1
-
-[node name="BG" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.29803923)
-position = Vector2(322.00003, 243.00002)
-scale = Vector2(6.531249, 4.828125)
-texture = ExtResource("1_mulmd")
-
-[node name="Zuitek" type="Sprite2D" parent="."]
-position = Vector2(284, 300)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("4_y12b8")
-
 [node name="GameTabs" type="TabContainer" parent="."]
+z_index = 50
 custom_minimum_size = Vector2(640, 480)
 offset_right = 640.0
 offset_bottom = 480.0
@@ -41,11 +31,19 @@ metadata/_tab_index = 0
 
 [node name="Add" type="Button" parent="GameTabs/Akademyk"]
 layout_mode = 0
-offset_left = 143.0
-offset_top = 255.0
-offset_right = 151.0
-offset_bottom = 263.0
-text = "BED"
+offset_left = 54.0
+offset_top = 396.0
+offset_right = 94.0
+offset_bottom = 427.0
+text = "Go to sleep"
+
+[node name="Shop" type="Button" parent="GameTabs/Akademyk"]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 352.0
+offset_right = 160.0
+offset_bottom = 383.0
+text = "Go Shopping"
 
 [node name="Sracz" type="Control" parent="GameTabs"]
 visible = false
@@ -55,11 +53,11 @@ metadata/_tab_index = 1
 
 [node name="Add" type="Button" parent="GameTabs/Sracz"]
 layout_mode = 0
-offset_left = 279.0
-offset_top = 205.0
-offset_right = 345.0
-offset_bottom = 236.0
-text = "Szoch"
+offset_left = 57.0
+offset_top = 390.0
+offset_right = 123.0
+offset_bottom = 421.0
+text = "Use toilet"
 
 [node name="Jadlodalnia" type="Control" parent="GameTabs"]
 visible = false
@@ -67,13 +65,72 @@ layout_mode = 2
 mouse_filter = 2
 metadata/_tab_index = 2
 
+[node name="Limit" type="MarginContainer" parent="GameTabs/Jadlodalnia"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 240
+theme_override_constants/margin_bottom = 30
+
+[node name="ColorRect" type="ColorRect" parent="GameTabs/Jadlodalnia/Limit"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.27058825)
+
+[node name="Margin" type="MarginContainer" parent="GameTabs/Jadlodalnia/Limit/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Box" type="VBoxContainer" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box"]
+layout_mode = 2
+text = "Loduwa"
+label_settings = SubResource("LabelSettings_y12b8")
+horizontal_alignment = 1
+
+[node name="Content" type="ScrollContainer" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ContentVBox" type="VBoxContainer" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Button" type="Button" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox"]
+layout_mode = 2
+text = "Stale bread"
+
+[node name="Button2" type="Button" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox"]
+layout_mode = 2
+text = "Piwko 12.3%"
+
+[node name="Button3" type="Button" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox"]
+layout_mode = 2
+text = "Canned ham"
+
 [node name="Add" type="Button" parent="GameTabs/Jadlodalnia"]
 layout_mode = 0
 offset_left = 62.0
 offset_top = 394.0
 offset_right = 131.0
 offset_bottom = 425.0
-text = "Loduwa"
+text = "Eat"
 
 [node name="HomeOffice" type="Control" parent="GameTabs"]
 visible = false
@@ -83,18 +140,41 @@ metadata/_tab_index = 3
 
 [node name="Add" type="Button" parent="GameTabs/HomeOffice"]
 layout_mode = 0
-offset_left = 450.0
-offset_top = 119.0
-offset_right = 532.0
-offset_bottom = 150.0
+offset_left = 51.0
+offset_top = 394.0
+offset_right = 133.0
+offset_bottom = 425.0
 text = "Masterb8"
 
+[node name="Gaming" type="Button" parent="GameTabs/HomeOffice"]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 344.0
+offset_right = 120.0
+offset_bottom = 375.0
+text = "Gaming"
+
+[node name="MainGameUI" parent="." instance=ExtResource("1_027td")]
+z_index = 55
+
+[node name="BG" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.29803923)
+position = Vector2(322.00003, 243.00002)
+scale = Vector2(6.531249, 4.828125)
+texture = ExtResource("1_mulmd")
+
+[node name="Zuitek" type="Sprite2D" parent="."]
+position = Vector2(284, 300)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_y12b8")
+
+[connection signal="pressed" from="GameTabs/Akademyk/Add" to="." method="add_hp" binds= [80]]
+[connection signal="pressed" from="GameTabs/Akademyk/Shop" to="MainGameUI" method="shop_enter"]
+[connection signal="pressed" from="GameTabs/Sracz/Add" to="." method="add_bladder" binds= [40]]
+[connection signal="pressed" from="GameTabs/Jadlodalnia/Add" to="." method="add_hunger" binds= [69]]
+[connection signal="pressed" from="GameTabs/HomeOffice/Add" to="." method="add_stress" binds= [40]]
 [connection signal="OnAkademykPress" from="MainGameUI" to="." method="akademyk_button"]
 [connection signal="OnHomeOfficePress" from="MainGameUI" to="." method="office_button"]
 [connection signal="OnJadlodalniaPress" from="MainGameUI" to="." method="jadlo_button"]
 [connection signal="OnQuitPress" from="MainGameUI" to="." method="quit_button"]
 [connection signal="OnSraczPress" from="MainGameUI" to="." method="sracz_button"]
-[connection signal="pressed" from="GameTabs/Akademyk/Add" to="." method="add_hp" binds= [80]]
-[connection signal="pressed" from="GameTabs/Sracz/Add" to="." method="add_bladder" binds= [40]]
-[connection signal="pressed" from="GameTabs/Jadlodalnia/Add" to="." method="add_hunger" binds= [69]]
-[connection signal="pressed" from="GameTabs/HomeOffice/Add" to="." method="add_stress" binds= [40]]
