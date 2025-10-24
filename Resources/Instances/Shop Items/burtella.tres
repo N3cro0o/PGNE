@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ShopItem" load_steps=3 format=3 uid="uid://bhfyxn532ugbr"]
+
+[ext_resource type="Script" uid="uid://y4j2vokd7yt1" path="res://Resources/Script/shop_item.gd" id="1_2hvgm"]
+[ext_resource type="Texture2D" uid="uid://d8kn7misupbf" path="res://Sprites/ShopItems/burtella.png" id="1_sjisx"]
+
+[resource]
+script = ExtResource("1_2hvgm")
+debug_name = "burtella"
+name = "Jar of Burtella"
+cost = 100
+description = "Hmmm, sweet 120g of sugar in 100g of product"
+image = ExtResource("1_sjisx")
+extra_param = 99
+metadata/_custom_type_script = "uid://y4j2vokd7yt1"

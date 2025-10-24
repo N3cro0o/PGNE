@@ -53,4 +53,5 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 24
 text = "BUY"
 
+[connection signal="resized" from="." to="." method="_on_resize"]
 [connection signal="pressed" from="Box/Layout/Buy" to="." method="_buy_click"]

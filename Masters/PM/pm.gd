@@ -1,6 +1,13 @@
 class_name PlayerMaster extends Node2D
 
 static var instance: PlayerMaster
+static var fridge := {
+	"bread": 3,
+	"piwko": 0,
+	"hotdog": 0,
+	"pizza": 0,
+	"burtella": 0
+}
 
 #region Variables
 

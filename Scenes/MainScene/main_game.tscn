@@ -1,30 +1,38 @@
-[gd_scene load_steps=7 format=3 uid="uid://cr23v8wojtk26"]
+[gd_scene load_steps=13 format=3 uid="uid://cr23v8wojtk26"]
 
 [ext_resource type="PackedScene" uid="uid://yb8q31wlggo8" path="res://Scenes/MainScene/UI/main_game_ui.tscn" id="1_027td"]
 [ext_resource type="Script" uid="uid://don2q2j0hm7d5" path="res://Scenes/MainScene/main_game.gd" id="1_jt1fx"]
-[ext_resource type="Texture2D" uid="uid://br5doicbce0vs" path="res://Sprites/Temp/icon.svg" id="1_mulmd"]
+[ext_resource type="Script" uid="uid://d1hef3rsuhtxg" path="res://Resources/Script/game_bg.gd" id="2_ybnbx"]
+[ext_resource type="Resource" uid="uid://c0lyxcc4wyy0j" path="res://Resources/Instances/Game BG/akademyk_bg.tres" id="3_ncjln"]
+[ext_resource type="Resource" uid="uid://dawq28fdnksel" path="res://Resources/Instances/Game BG/sracz_bg.tres" id="4_hl25e"]
 [ext_resource type="Texture2D" uid="uid://rsj1fsei24h8" path="res://Sprites/Temp/Kretex.png" id="4_y12b8"]
+[ext_resource type="Resource" uid="uid://cw1cvuvgahl6k" path="res://Resources/Instances/Game BG/jadlodalnia_bg.tres" id="5_i5ls4"]
+[ext_resource type="Resource" uid="uid://3vu67ejtxuw" path="res://Resources/Instances/Game BG/home_office_bg.tres" id="6_oqfto"]
+[ext_resource type="AudioStream" uid="uid://3tti48gm7wn5" path="res://Sounds/pizza pepperoni.mp3" id="9_ncjln"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jt1fx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y12b8"]
 font_size = 32
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8k00p"]
+
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_jt1fx")
+game_backgrounds = Array[ExtResource("2_ybnbx")]([ExtResource("3_ncjln"), ExtResource("4_hl25e"), ExtResource("5_i5ls4"), ExtResource("6_oqfto")])
 
 [node name="GameTabs" type="TabContainer" parent="."]
 z_index = 50
 custom_minimum_size = Vector2(640, 480)
 offset_right = 640.0
 offset_bottom = 480.0
-mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_jt1fx")
-current_tab = 0
+current_tab = 2
 clip_tabs = false
 tabs_visible = false
 
 [node name="Akademyk" type="Control" parent="GameTabs"]
+visible = false
 layout_mode = 2
 mouse_filter = 2
 metadata/_tab_index = 0
@@ -45,6 +53,11 @@ offset_right = 160.0
 offset_bottom = 383.0
 text = "Go Shopping"
 
+[node name="Ziutek" type="Sprite2D" parent="GameTabs/Akademyk"]
+position = Vector2(314, 271)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("4_y12b8")
+
 [node name="Sracz" type="Control" parent="GameTabs"]
 visible = false
 layout_mode = 2
@@ -60,7 +73,6 @@ offset_bottom = 421.0
 text = "Use toilet"
 
 [node name="Jadlodalnia" type="Control" parent="GameTabs"]
-visible = false
 layout_mode = 2
 mouse_filter = 2
 metadata/_tab_index = 2
@@ -112,17 +124,25 @@ size_flags_vertical = 3
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Button" type="Button" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox"]
+[node name="Chlib" type="Button" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox"]
 layout_mode = 2
 text = "Stale bread"
 
-[node name="Button2" type="Button" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox"]
+[node name="Piwko" type="Button" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox"]
 layout_mode = 2
 text = "Piwko 12.3%"
 
-[node name="Button3" type="Button" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox"]
+[node name="Hotdoggers" type="Button" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox"]
 layout_mode = 2
-text = "Canned ham"
+text = "Hot-dog"
+
+[node name="PizzaZabka" type="Button" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox"]
+layout_mode = 2
+text = "Pizza pepperoni"
+
+[node name="Burtella" type="Button" parent="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox"]
+layout_mode = 2
+text = "Burtella"
 
 [node name="Add" type="Button" parent="GameTabs/Jadlodalnia"]
 layout_mode = 0
@@ -159,19 +179,24 @@ z_index = 55
 
 [node name="BG" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.29803923)
-position = Vector2(322.00003, 243.00002)
-scale = Vector2(6.531249, 4.828125)
-texture = ExtResource("1_mulmd")
+position = Vector2(338, 234)
+scale = Vector2(726, 566)
+texture = SubResource("PlaceholderTexture2D_8k00p")
 
-[node name="Zuitek" type="Sprite2D" parent="."]
-position = Vector2(284, 300)
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("4_y12b8")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ncjln")
+volume_db = -20.0
 
+[connection signal="gui_input" from="GameTabs" to="." method="_get_mouse_click"]
 [connection signal="pressed" from="GameTabs/Akademyk/Add" to="." method="add_hp" binds= [80]]
 [connection signal="pressed" from="GameTabs/Akademyk/Shop" to="MainGameUI" method="shop_enter"]
 [connection signal="pressed" from="GameTabs/Sracz/Add" to="." method="add_bladder" binds= [40]]
-[connection signal="pressed" from="GameTabs/Jadlodalnia/Add" to="." method="add_hunger" binds= [69]]
+[connection signal="pressed" from="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox/Chlib" to="." method="_loduwa_button" binds= [0]]
+[connection signal="pressed" from="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox/Piwko" to="." method="_loduwa_button" binds= [1]]
+[connection signal="pressed" from="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox/Hotdoggers" to="." method="_loduwa_button" binds= [2]]
+[connection signal="pressed" from="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox/PizzaZabka" to="." method="_loduwa_button" binds= [3]]
+[connection signal="pressed" from="GameTabs/Jadlodalnia/Limit/ColorRect/Margin/Box/Content/ContentVBox/Burtella" to="." method="_loduwa_button" binds= [4]]
+[connection signal="pressed" from="GameTabs/Jadlodalnia/Add" to="." method="_toggle_fridge"]
 [connection signal="pressed" from="GameTabs/HomeOffice/Add" to="." method="add_stress" binds= [40]]
 [connection signal="OnAkademykPress" from="MainGameUI" to="." method="akademyk_button"]
 [connection signal="OnHomeOfficePress" from="MainGameUI" to="." method="office_button"]

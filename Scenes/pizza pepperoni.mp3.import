@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://jsrt5fta80yo"
+path="res://.godot/imported/pizza pepperoni.mp3-25c816722bbb53dd84dc079d4d69f854.mp3str"
+
+[deps]
+
+source_file="res://Scenes/pizza pepperoni.mp3"
+dest_files=["res://.godot/imported/pizza pepperoni.mp3-25c816722bbb53dd84dc079d4d69f854.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

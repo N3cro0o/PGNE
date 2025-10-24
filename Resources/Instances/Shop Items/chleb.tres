@@ -10,4 +10,5 @@ name = "Stale Bread"
 cost = 5
 description = "Stale bread, nothing more to add"
 image = ExtResource("1_8fotb")
+extra_param = 10
 metadata/_custom_type_script = "uid://y4j2vokd7yt1"

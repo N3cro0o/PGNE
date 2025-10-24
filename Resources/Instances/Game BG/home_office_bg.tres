@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="GameBg" load_steps=3 format=3 uid="uid://3vu67ejtxuw"]
+
+[ext_resource type="Texture2D" uid="uid://c0vqx7kcgniav" path="res://Sprites/BG/1761327550148.jpg" id="1_1vlg2"]
+[ext_resource type="Script" uid="uid://d1hef3rsuhtxg" path="res://Resources/Script/game_bg.gd" id="1_ost81"]
+
+[resource]
+script = ExtResource("1_ost81")
+image = ExtResource("1_1vlg2")
+position = Vector2(325, 250)
+scale = Vector2(0.24165885, 0.28622007)
+metadata/_custom_type_script = "uid://d1hef3rsuhtxg"

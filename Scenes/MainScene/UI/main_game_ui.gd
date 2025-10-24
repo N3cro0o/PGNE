@@ -23,10 +23,12 @@ signal OnHomeOfficePress
 #endregion
 
 func _ready() -> void:
-	var listing = SHOP_LISTING.instantiate() as ShopListing
-	var shop_item = GameMaster.instance.shop_items[0]
-	listing._load_data(shop_item)
-	box_for_shop_listings.add_child(listing)
+	for item in GameMaster.instance.shop_items:
+		if item.ignore:
+			continue
+		var listing = SHOP_LISTING.instantiate() as ShopListing
+		listing._load_data(item)
+		box_for_shop_listings.add_child(listing)
 
 func _process(_delta: float) -> void:
 	hp_label.text = "Sleep: %d" % PlayerMaster.instance.health

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ShopItem" load_steps=3 format=3 uid="uid://nk4l0x0ns0fm"]
+
+[ext_resource type="Script" uid="uid://y4j2vokd7yt1" path="res://Resources/Script/shop_item.gd" id="1_jwnfe"]
+[ext_resource type="Texture2D" uid="uid://cgjh844l0bbu2" path="res://Sprites/ShopItems/pizza.jpg" id="1_q0m5c"]
+
+[resource]
+script = ExtResource("1_jwnfe")
+debug_name = "pizza"
+name = "Pizza pepperoni"
+cost = 25
+description = "Everyone will eat them!"
+image = ExtResource("1_q0m5c")
+extra_param = 45
+metadata/_custom_type_script = "uid://y4j2vokd7yt1"

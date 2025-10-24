@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ShopItem" load_steps=2 format=3 uid="uid://cx75mstcwtd6p"]
+
+[ext_resource type="Script" uid="uid://y4j2vokd7yt1" path="res://Resources/Script/shop_item.gd" id="1_n0ng5"]
+
+[resource]
+script = ExtResource("1_n0ng5")
+debug_name = "hotdog"
+ignore = true
+extra_param = 20
+metadata/_custom_type_script = "uid://y4j2vokd7yt1"
