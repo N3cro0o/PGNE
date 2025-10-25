@@ -5,7 +5,7 @@ static var fridge := {
 	"bread": 3,
 	"piwko": 0,
 	"hotdog": 0,
-	"pizza": 0,
+	"pizza": 1,
 	"burtella": 0
 }
 

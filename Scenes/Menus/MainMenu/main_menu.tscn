@@ -1,7 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://b82tq8ij7xd3a"]
+[gd_scene load_steps=7 format=3 uid="uid://b82tq8ij7xd3a"]
 
 [ext_resource type="Script" uid="uid://b6qd6w2gkyoj6" path="res://Scenes/Menus/MainMenu/main_menu.gd" id="1_tb3ri"]
-[ext_resource type="Texture2D" uid="uid://br5doicbce0vs" path="res://Sprites/Temp/icon.svg" id="1_yo6co"]
+[ext_resource type="Texture2D" uid="uid://bcy1bpjmy3ful" path="res://Sprites/BG/wittygowo.jpg" id="2_tb3ri"]
+[ext_resource type="Shader" uid="uid://2e474cs8hblb" path="res://Shaders/blur.gdshader" id="3_fy1kh"]
+[ext_resource type="SpriteFrames" uid="uid://bgpdh11nlbttm" path="res://Sprites/Logo/Logo.tres" id="4_gphap"]
+
+[sub_resource type="Curve" id="Curve_fy1kh"]
+_limits = [-0.2, 0.2, 0.0, 1.0]
+_data = [Vector2(0, -0.2), 0.0, 0.0, 0, 0, Vector2(0.49612403, 0.2), 0.0, 0.0, 0, 0, Vector2(1, -0.2), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gphap"]
+shader = ExtResource("3_fy1kh")
+shader_parameter/lod = 2.52400011989
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,18 +22,39 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tb3ri")
+rotation_speed = SubResource("Curve_fy1kh")
 
 [node name="BG" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.44313726)
+z_index = -5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -178.0
+offset_top = -125.0
+offset_right = 206.0
+offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(320, 240)
-texture = ExtResource("1_yo6co")
+pivot_offset = Vector2(512, 350)
+texture = ExtResource("2_tb3ri")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_gphap")
+position = Vector2(322, 239)
+scale = Vector2(0.7314286, 0.73142856)
+texture = ExtResource("2_tb3ri")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(326, 93)
+scale = Vector2(0.5355192, 0.5355191)
+sprite_frames = ExtResource("4_gphap")
+autoplay = "default"
+frame_progress = 0.3999298
 
 [node name="Margin" type="MarginContainer" parent="."]
+z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,7 +62,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 200
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 180
 theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 50
 
