@@ -1,9 +1,10 @@
 class_name PlayerMaster extends Node2D
 
 static var instance: PlayerMaster
+#TODO Add piwko count... somewhere
 static var fridge := {
 	"bread": 3,
-	"piwko": 0,
+	"piwko": 2,
 	"hotdog": 0,
 	"pizza": 1,
 	"burtella": 0

@@ -147,12 +147,13 @@ text = "Akademyk"
 [node name="SraczBttn" type="Button" parent="UI/Main/ColorRect/MainMargin/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Sracz"
+text = "Wychodek"
 
 [node name="Jadlobttn" type="Button" parent="UI/Main/ColorRect/MainMargin/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Jadłodal-nia"
+text = "Jadłodal-
+nia"
 autowrap_mode = 3
 
 [node name="HomeOfficeBttn" type="Button" parent="UI/Main/ColorRect/MainMargin/VBox"]
@@ -226,9 +227,94 @@ layout_mode = 2
 size_flags_horizontal = 8
 text = "Leave"
 
+[node name="GamingMenu" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.27058825)
+
+[node name="Margin" type="MarginContainer" parent="GamingMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Body" type="VBoxContainer" parent="GamingMenu/Margin"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="GamingMenu/Margin/Body"]
+layout_mode = 2
+text = "GAMINGO !!!!!!!!!"
+label_settings = SubResource("LabelSettings_a1mol")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="GamingMenu/Margin/Body"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Games" type="GridContainer" parent="GamingMenu/Margin/Body"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 16
+columns = 3
+
+[node name="ColorRect" type="ColorRect" parent="GamingMenu/Margin/Body/Games"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(3.080368e-06, 0.7122569, 0.71127033, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="GamingMenu/Margin/Body/Games"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(1, 0, 1, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="GamingMenu/Margin/Body/Games"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(1, 0, 1, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="GamingMenu/Margin/Body/Games"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(1, 0, 1, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="GamingMenu/Margin/Body/Games"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.9880008, 0.43131799, 0, 1)
+
+[node name="ColorRect6" type="ColorRect" parent="GamingMenu/Margin/Body/Games"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(1, 0, 1, 1)
+
+[node name="QuitButton" type="Button" parent="GamingMenu/Margin/Body"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Leave"
+
 [connection signal="pressed" from="UI/Top/TopMargin/HBox/QuitBttn" to="." method="_quit_press"]
 [connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/AkademykBttn" to="." method="_akademyk_press"]
 [connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/SraczBttn" to="." method="_sracz_press"]
 [connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/Jadlobttn" to="." method="_jadlodalnia_press"]
 [connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/HomeOfficeBttn" to="." method="_home_office_press"]
 [connection signal="pressed" from="Shop/Margin/Body/QuitButton" to="." method="shop_quit"]
+[connection signal="pressed" from="GamingMenu/Margin/Body/QuitButton" to="." method="game_center_quit"]

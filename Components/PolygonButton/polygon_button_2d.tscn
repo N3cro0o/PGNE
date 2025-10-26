@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwx7ltl1g7h6f"]
+
+[ext_resource type="Script" uid="uid://clhyhse11j2kt" path="res://Components/PolygonButton/polygon_button.gd" id="1_18e4c"]
+
+[node name="PolygonButton2D" type="Polygon2D"]
+script = ExtResource("1_18e4c")

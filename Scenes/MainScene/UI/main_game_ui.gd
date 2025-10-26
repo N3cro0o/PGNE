@@ -11,6 +11,7 @@ const SHOP_LISTING = preload("uid://dejmqxbeg2e2s")
 @onready var cans_label: Label = $UI/Top/TopMargin/HBox/CansLabel
 @onready var ui: VBoxContainer = $UI
 @onready var shop: ColorRect = $Shop
+@onready var gaming_menu: ColorRect = $GamingMenu
 
 @onready var box_for_shop_listings: VBoxContainer = $Shop/Margin/Body/ShopTabs/Food/Box
 
@@ -19,6 +20,9 @@ signal OnAkademykPress
 signal OnSraczPress
 signal OnJadlodalniaPress
 signal OnHomeOfficePress
+
+signal on_shop_close
+signal on_game_center_close
 
 #endregion
 
@@ -59,7 +63,21 @@ func _home_office_press():
 func shop_enter():
 	ui.visible = false
 	shop.visible = true
+	gaming_menu.visible = false
 
 func shop_quit():
 	ui.visible = true
 	shop.visible = false
+	gaming_menu.visible = false
+	on_shop_close.emit()
+
+func game_center_enter():
+	ui.visible = false
+	gaming_menu.visible = true
+	shop.visible = false
+
+func game_center_quit():
+	ui.visible = true
+	gaming_menu.visible = false
+	shop.visible = false
+	on_game_center_close.emit()
