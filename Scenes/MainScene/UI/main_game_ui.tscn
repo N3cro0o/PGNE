@@ -1,12 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://yb8q31wlggo8"]
+[gd_scene load_steps=8 format=3 uid="uid://yb8q31wlggo8"]
 
 [ext_resource type="Script" uid="uid://dcw8fpqkpkwmr" path="res://Scenes/MainScene/UI/main_game_ui.gd" id="1_a1mol"]
-[ext_resource type="Texture2D" uid="uid://br5doicbce0vs" path="res://Sprites/Temp/icon.svg" id="1_xar6p"]
+[ext_resource type="Texture2D" uid="uid://dhm3vnppmxebd" path="res://Sprites/GUI/icon_cog.png" id="2_a1mol"]
+[ext_resource type="Texture2D" uid="uid://3di0wjjivd8p" path="res://Sprites/ShopItems/ShopItemsCompressed/pizza_small.png" id="3_6eet8"]
+[ext_resource type="Shader" uid="uid://2e474cs8hblb" path="res://Shaders/blur.gdshader" id="4_i503h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a1mol"]
 font_size = 38
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ryxha"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lyey3"]
+shader = ExtResource("4_i503h")
+shader_parameter/lod = 2.4030001141425
 
 [node name="MainGameUI" type="Control"]
 z_index = 50
@@ -58,14 +64,14 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 
 [node name="QuitBttn" type="Button" parent="UI/Top/TopMargin/HBox"]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(70, 64)
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 28
-text = "Quit"
-icon = ExtResource("1_xar6p")
+icon = ExtResource("2_a1mol")
+flat = true
 icon_alignment = 1
 expand_icon = true
 
@@ -228,7 +234,6 @@ size_flags_horizontal = 8
 text = "Leave"
 
 [node name="GamingMenu" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -270,11 +275,29 @@ theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 columns = 3
 
-[node name="ColorRect" type="ColorRect" parent="GamingMenu/Margin/Body/Games"]
+[node name="ColorRect" type="TextureRect" parent="GamingMenu/Margin/Body/Games"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-color = Color(3.080368e-06, 0.7122569, 0.71127033, 1)
+texture = ExtResource("3_6eet8")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Control" type="Polygon2D" parent="GamingMenu/Margin/Body/Games/ColorRect"]
+material = SubResource("ShaderMaterial_lyey3")
+polygon = PackedVector2Array(0, 0, 196, 0, 196, 169, 0, 169)
+
+[node name="Button" type="Button" parent="GamingMenu/Margin/Body/Games/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 52
+text = "Miss-a-Hole"
+flat = true
+autowrap_mode = 2
 
 [node name="ColorRect2" type="ColorRect" parent="GamingMenu/Margin/Body/Games"]
 layout_mode = 2

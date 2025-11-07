@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvdlispr17ae8"]
+
+[ext_resource type="Texture2D" uid="uid://do5solmqqat0x" path="res://Sprites/ShopItems/piwka.png" id="1_1wcgy"]
+[ext_resource type="Script" uid="uid://ccjpv0vx325id" path="res://Scenes/Minigames/Game1-Pasat/Obstacle/obstacle.gd" id="1_gq4xk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ja7n2"]
+radius = 24.0
+
+[node name="Obstacle" type="Area2D"]
+script = ExtResource("1_gq4xk")
+move_speed = 150.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+scale = Vector2(0.20666666, 0.20666666)
+texture = ExtResource("1_1wcgy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ja7n2")

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://tc3ihcvkgaf0"]
+
+[ext_resource type="Texture2D" uid="uid://do5solmqqat0x" path="res://Sprites/ShopItems/piwka.png" id="1_cmtd1"]
+[ext_resource type="Script" uid="uid://bl3hewjslentn" path="res://Scenes/Minigames/Game1-Pasat/Cans/cans.gd" id="1_mltce"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ja7n2"]
+radius = 22.022715
+
+[node name="Cans" type="Area2D"]
+script = ExtResource("1_mltce")
+move_speed = 150.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.20666666, 0.20666666)
+texture = ExtResource("1_cmtd1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ja7n2")
+
+[connection signal="area_entered" from="." to="." method="_on_character_hit"]

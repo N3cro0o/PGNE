@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=3 uid="uid://byakp5eidib83"]
+
+[ext_resource type="Script" uid="uid://cwig6qcbe8sss" path="res://Scenes/Minigames/Game1-Pasat/pasat.gd" id="1_0215e"]
+[ext_resource type="Texture2D" uid="uid://br5doicbce0vs" path="res://Sprites/Temp/icon.svg" id="2_sbx25"]
+[ext_resource type="PackedScene" uid="uid://dvdlispr17ae8" path="res://Scenes/Minigames/Game1-Pasat/Obstacle/obstacle.tscn" id="3_7ghyr"]
+[ext_resource type="PackedScene" uid="uid://tc3ihcvkgaf0" path="res://Scenes/Minigames/Game1-Pasat/Cans/cans.tscn" id="4_mf4o6"]
+[ext_resource type="Texture2D" uid="uid://d8kn7misupbf" path="res://Sprites/ShopItems/burtella.png" id="4_qgkjc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ghyr"]
+radius = 28.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgkjc"]
+radius = 47.0
+height = 154.0
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7ghyr"]
+normal = Vector2(1, 0)
+distance = -0.5
+
+[node name="Game1" type="Node2D" node_paths=PackedStringArray("obs_left", "obs_right", "tin_cans")]
+script = ExtResource("1_0215e")
+obs_left = [NodePath("Obstacles/ObstacleL1"), NodePath("Obstacles/ObstacleL2"), NodePath("Obstacles/ObstacleL3"), NodePath("Obstacles/ObstacleL4"), NodePath("Obstacles/ObstacleL5")]
+obs_right = [NodePath("Obstacles/ObstacleR1"), NodePath("Obstacles/ObstacleR2"), NodePath("Obstacles/ObstacleR3"), NodePath("Obstacles/ObstacleR4"), NodePath("Obstacles/ObstacleR5")]
+tin_cans = [NodePath("Obstacles/Can1"), NodePath("Obstacles/Can2")]
+dif_time_offset = 20.0
+
+[node name="Lines" type="Node2D" parent="."]
+
+[node name="Left" type="Line2D" parent="Lines"]
+position = Vector2(0, 270)
+points = PackedVector2Array(-200, 0, 800, 0)
+width = 3.0
+
+[node name="Right" type="Line2D" parent="Lines"]
+position = Vector2(0, 370)
+points = PackedVector2Array(-200, 0, 800, 0)
+width = 3.0
+
+[node name="Opposite" type="Line2D" parent="Lines"]
+position = Vector2(0, 120)
+points = PackedVector2Array(-200, 0, 800, 0)
+width = 3.0
+
+[node name="MainCharacter" type="Area2D" parent="." groups=["player"]]
+position = Vector2(60, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="MainCharacter"]
+scale = Vector2(0.4375, 0.4375)
+texture = ExtResource("2_sbx25")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainCharacter"]
+shape = SubResource("CircleShape2D_7ghyr")
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="ObstacleL1" parent="Obstacles" instance=ExtResource("3_7ghyr")]
+position = Vector2(850, 270)
+
+[node name="ObstacleL2" parent="Obstacles" instance=ExtResource("3_7ghyr")]
+position = Vector2(850, 270)
+
+[node name="ObstacleL3" parent="Obstacles" instance=ExtResource("3_7ghyr")]
+position = Vector2(850, 270)
+
+[node name="ObstacleL4" parent="Obstacles" instance=ExtResource("3_7ghyr")]
+position = Vector2(850, 270)
+
+[node name="ObstacleL5" parent="Obstacles" instance=ExtResource("3_7ghyr")]
+position = Vector2(850, 270)
+
+[node name="ObstacleR1" parent="Obstacles" instance=ExtResource("3_7ghyr")]
+position = Vector2(850, 370)
+
+[node name="ObstacleR2" parent="Obstacles" instance=ExtResource("3_7ghyr")]
+position = Vector2(850, 370)
+
+[node name="ObstacleR3" parent="Obstacles" instance=ExtResource("3_7ghyr")]
+position = Vector2(850, 370)
+
+[node name="ObstacleR4" parent="Obstacles" instance=ExtResource("3_7ghyr")]
+position = Vector2(850, 370)
+
+[node name="ObstacleR5" parent="Obstacles" instance=ExtResource("3_7ghyr")]
+position = Vector2(850, 370)
+
+[node name="ObstacleCar1" parent="Obstacles" instance=ExtResource("3_7ghyr")]
+position = Vector2(850, 120)
+move_speed = 500.0
+
+[node name="Sprite2D" parent="Obstacles/ObstacleCar1" index="0"]
+position = Vector2(0, -7.0000076)
+scale = Vector2(0.4224138, 1.2129033)
+texture = ExtResource("4_qgkjc")
+
+[node name="CollisionShape2D" parent="Obstacles/ObstacleCar1" index="1"]
+shape = SubResource("CapsuleShape2D_qgkjc")
+
+[node name="Can1" parent="Obstacles" instance=ExtResource("4_mf4o6")]
+position = Vector2(850, 314)
+
+[node name="Can2" parent="Obstacles" instance=ExtResource("4_mf4o6")]
+position = Vector2(850, 314)
+
+[node name="StopObstacles" type="Area2D" parent="."]
+position = Vector2(0, -107)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StopObstacles"]
+shape = SubResource("WorldBoundaryShape2D_7ghyr")
+
+[node name="TimerLeft" type="Timer" parent="."]
+
+[connection signal="area_entered" from="Obstacles/ObstacleL1" to="." method="_obstacle_hit"]
+[connection signal="area_entered" from="Obstacles/ObstacleL2" to="." method="_obstacle_hit"]
+[connection signal="area_entered" from="Obstacles/ObstacleL3" to="." method="_obstacle_hit"]
+[connection signal="area_entered" from="Obstacles/ObstacleL4" to="." method="_obstacle_hit"]
+[connection signal="area_entered" from="Obstacles/ObstacleL5" to="." method="_obstacle_hit"]
+[connection signal="area_entered" from="Obstacles/ObstacleR1" to="." method="_obstacle_hit"]
+[connection signal="area_entered" from="Obstacles/ObstacleR2" to="." method="_obstacle_hit"]
+[connection signal="area_entered" from="Obstacles/ObstacleR3" to="." method="_obstacle_hit"]
+[connection signal="area_entered" from="Obstacles/ObstacleR4" to="." method="_obstacle_hit"]
+[connection signal="area_entered" from="Obstacles/ObstacleR5" to="." method="_obstacle_hit"]
+[connection signal="area_entered" from="Obstacles/ObstacleCar1" to="." method="_obstacle_hit"]
+[connection signal="area_entered" from="StopObstacles" to="." method="_reset_obstacle"]
+[connection signal="timeout" from="TimerLeft" to="." method="_on_obstacle_timer"]
+
+[editable path="Obstacles/ObstacleCar1"]

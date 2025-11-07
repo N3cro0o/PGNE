@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://mmngd5sx0u81"]
+[gd_scene load_steps=11 format=3 uid="uid://mmngd5sx0u81"]
 
 [ext_resource type="Script" uid="uid://dkpyhuovmf1wa" path="res://Masters/GM/gm.gd" id="1_2s2pk"]
 [ext_resource type="PackedScene" uid="uid://b82tq8ij7xd3a" path="res://Scenes/Menus/MainMenu/main_menu.tscn" id="2_vtv0w"]
 [ext_resource type="PackedScene" uid="uid://cr23v8wojtk26" path="res://Scenes/MainScene/main_game.tscn" id="3_50g81"]
+[ext_resource type="PackedScene" uid="uid://byakp5eidib83" path="res://Scenes/Minigames/Game1-Pasat/game_1.tscn" id="4_7toyk"]
 [ext_resource type="Script" uid="uid://y4j2vokd7yt1" path="res://Resources/Script/shop_item.gd" id="4_fd3iw"]
 [ext_resource type="Resource" uid="uid://c0pbtc2i26m1b" path="res://Resources/Instances/Shop Items/chleb.tres" id="5_wjyef"]
 [ext_resource type="Resource" uid="uid://cnl6alasgbrgn" path="res://Resources/Instances/Shop Items/piwko.tres" id="6_rab1n"]
@@ -12,5 +13,5 @@
 
 [node name="GM" type="Node2D"]
 script = ExtResource("1_2s2pk")
-game_scenes = Array[PackedScene]([ExtResource("2_vtv0w"), ExtResource("3_50g81")])
+game_scenes = Array[PackedScene]([ExtResource("2_vtv0w"), ExtResource("3_50g81"), ExtResource("4_7toyk")])
 shop_items = Array[ExtResource("4_fd3iw")]([ExtResource("5_wjyef"), ExtResource("6_rab1n"), ExtResource("7_7toyk"), ExtResource("8_fc3s1"), ExtResource("9_ty7db")])

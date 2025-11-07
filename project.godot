@@ -31,6 +31,10 @@ window/stretch/aspect="keep_width"
 
 project/assembly_name="PGNE"
 
+[global_group]
+
+player=""
+
 [physics]
 
 common/physics_ticks_per_second=20

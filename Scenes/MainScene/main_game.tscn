@@ -136,7 +136,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box"]
 layout_mode = 2
-text = "Loduwa"
+text = "Fridge"
 label_settings = SubResource("LabelSettings_y12b8")
 horizontal_alignment = 1
 
