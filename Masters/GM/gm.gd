@@ -15,6 +15,7 @@ var boosted_drops = false
 
 func _ready() -> void:
 	instance = self
+	await OSM.load_done
 
 func _input(event: InputEvent) -> void:
 	if OS.is_debug_build():

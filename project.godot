@@ -13,11 +13,16 @@ config_version=5
 config/name="PGNE"
 run/main_scene="uid://b82tq8ij7xd3a"
 config/features=PackedStringArray("4.5", "Mobile")
+boot_splash/bg_color=Color(0.6901961, 0.12156863, 0.03529412, 1)
+boot_splash/fullsize=false
+boot_splash/image="uid://jayr086f4e5b"
 config/icon="res://Sprites/Temp/icon.svg"
+boot_splash/minimum_display_time=333
 
 [autoload]
 
 GM="*res://Masters/GM/gm.tscn"
+OSM="*res://Masters/OM/osm.tscn"
 PM="*res://Masters/PM/pm.tscn"
 
 [display]

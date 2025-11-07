@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b82tq8ij7xd3a"]
+[gd_scene load_steps=8 format=3 uid="uid://b82tq8ij7xd3a"]
 
 [ext_resource type="Script" uid="uid://b6qd6w2gkyoj6" path="res://Scenes/Menus/MainMenu/main_menu.gd" id="1_tb3ri"]
+[ext_resource type="Theme" uid="uid://c3ndx4odidiae" path="res://Resources/Themes/main_ui_theme.tres" id="1_yobja"]
 [ext_resource type="Texture2D" uid="uid://bcy1bpjmy3ful" path="res://Sprites/BG/wittygowo.jpg" id="2_tb3ri"]
 [ext_resource type="Shader" uid="uid://2e474cs8hblb" path="res://Shaders/blur.gdshader" id="3_fy1kh"]
 [ext_resource type="SpriteFrames" uid="uid://bgpdh11nlbttm" path="res://Sprites/Logo/Logo.tres" id="4_gphap"]
@@ -21,6 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_yobja")
 script = ExtResource("1_tb3ri")
 rotation_speed = SubResource("Curve_fy1kh")
 
@@ -37,7 +39,7 @@ offset_right = 206.0
 offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(512, 350)
+pivot_offset = Vector2(360, 350)
 texture = ExtResource("2_tb3ri")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -47,13 +49,13 @@ scale = Vector2(0.7314286, 0.73142856)
 texture = ExtResource("2_tb3ri")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(326, 93)
+position = Vector2(236, 93)
 scale = Vector2(0.5355192, 0.5355191)
 sprite_frames = ExtResource("4_gphap")
 autoplay = "default"
 frame_progress = 0.3999298
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="ButtonsMargin" type="MarginContainer" parent="."]
 z_index = 5
 layout_mode = 1
 anchors_preset = 15
@@ -61,35 +63,99 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 200
-theme_override_constants/margin_top = 180
-theme_override_constants/margin_right = 200
-theme_override_constants/margin_bottom = 50
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 380
+theme_override_constants/margin_bottom = 30
 
-[node name="BttnBG" type="ColorRect" parent="Margin"]
+[node name="BttnBG" type="ColorRect" parent="ButtonsMargin"]
 layout_mode = 2
-color = Color(0, 0, 0, 0.27058825)
+color = Color(0, 0, 0, 0)
 
-[node name="BttnMargin" type="MarginContainer" parent="Margin"]
+[node name="BttnMargin" type="MarginContainer" parent="ButtonsMargin"]
 layout_mode = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_right = 30
 
-[node name="BttnContainer" type="VBoxContainer" parent="Margin/BttnMargin"]
+[node name="BttnContainer" type="VBoxContainer" parent="ButtonsMargin/BttnMargin"]
 layout_mode = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Start" type="Button" parent="Margin/BttnMargin/BttnContainer"]
+[node name="Start" type="Button" parent="ButtonsMargin/BttnMargin/BttnContainer"]
 layout_mode = 2
 text = "Start"
+alignment = 0
 
-[node name="Options" type="Button" parent="Margin/BttnMargin/BttnContainer"]
+[node name="Options" type="Button" parent="ButtonsMargin/BttnMargin/BttnContainer"]
 layout_mode = 2
 text = "Options"
+alignment = 0
 
-[node name="Saves" type="Button" parent="Margin/BttnMargin/BttnContainer"]
+[node name="Saves" type="Button" parent="ButtonsMargin/BttnMargin/BttnContainer"]
 layout_mode = 2
 text = "Change Save"
+alignment = 0
 
-[connection signal="pressed" from="Margin/BttnMargin/BttnContainer/Start" to="." method="_start_button_pressed"]
+[node name="SubMenuMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 250
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Options" type="Control" parent="SubMenuMargin"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubMenuMargin/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="LabelSlider" type="VBoxContainer" parent="SubMenuMargin/Options/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubMenuMargin/Options/VBoxContainer/LabelSlider"]
+layout_mode = 2
+text = "Master"
+
+[node name="HSlider" type="HSlider" parent="SubMenuMargin/Options/VBoxContainer/LabelSlider"]
+layout_mode = 2
+min_value = -30.0
+max_value = 0.0
+step = 0.1
+
+[node name="SaveButton" type="Button" parent="SubMenuMargin/Options/VBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Manual save"
+
+[node name="ExportButton" type="Button" parent="SubMenuMargin/Options/VBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Export save"
+
+[node name="OptionButton" type="OptionButton" parent="SubMenuMargin/Options/VBoxContainer"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="SubMenuMargin/Options/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Mobile controls    "
+
+[connection signal="gui_input" from="ButtonsMargin" to="." method="_hide_panels"]
+[connection signal="pressed" from="ButtonsMargin/BttnMargin/BttnContainer/Start" to="." method="_start_button_pressed"]
+[connection signal="pressed" from="ButtonsMargin/BttnMargin/BttnContainer/Options" to="." method="_option_button_pressed"]

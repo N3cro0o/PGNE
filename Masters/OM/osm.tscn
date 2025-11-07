@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cx0f2pbxatdto"]
+
+[ext_resource type="Script" uid="uid://c7pwet04v3cik" path="res://Masters/OM/osm.gd" id="1_s1ueq"]
+
+[node name="OSM" type="Node2D"]
+script = ExtResource("1_s1ueq")
