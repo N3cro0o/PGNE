@@ -261,4 +261,5 @@ volume_db = -20.0
 [connection signal="OnQuitPress" from="MainGameUI" to="." method="quit_button"]
 [connection signal="OnSraczPress" from="MainGameUI" to="." method="sracz_button"]
 [connection signal="on_game_center_close" from="MainGameUI" to="." method="_hide_game_center"]
+[connection signal="on_game_start" from="MainGameUI" to="." method="_start_minigame"]
 [connection signal="on_shop_close" from="MainGameUI" to="." method="_hide_shop"]

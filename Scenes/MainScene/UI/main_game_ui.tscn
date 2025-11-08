@@ -234,6 +234,7 @@ size_flags_horizontal = 8
 text = "Leave"
 
 [node name="GamingMenu" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -340,4 +341,5 @@ text = "Leave"
 [connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/Jadlobttn" to="." method="_jadlodalnia_press"]
 [connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/HomeOfficeBttn" to="." method="_home_office_press"]
 [connection signal="pressed" from="Shop/Margin/Body/QuitButton" to="." method="shop_quit"]
+[connection signal="pressed" from="GamingMenu/Margin/Body/Games/ColorRect/Button" to="." method="game_button_press" binds= [0]]
 [connection signal="pressed" from="GamingMenu/Margin/Body/QuitButton" to="." method="game_center_quit"]

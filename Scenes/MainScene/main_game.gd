@@ -20,6 +20,7 @@ var line_time := 0.0:
 			line_time = 0
 		else:
 			line_time = x
+
 #endregion
 
 func _physics_process(delta: float) -> void:
@@ -94,6 +95,10 @@ func _update_piwko():
 		$GameTabs/HomeOffice/Relaxxxxx.visible = false
 
 #region Button functions
+
+func _start_minigame(id: int):
+	# End processes logic
+	GameMaster.instance._change_current_scene(id + 2)
 
 func _drink_piwko():
 	if PlayerMaster.fridge["piwko"] > 0:

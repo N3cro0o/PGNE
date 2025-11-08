@@ -1,5 +1,8 @@
 extends Node2D
 
+#region Variables
+#region Exports
+
 @export_group("Obstacles", "obs_")
 @export_range(0, 300, 1) var obs_stop_thresh = 200.0
 @export var obs_left: Array[Game1Obstacle]
@@ -16,6 +19,12 @@ extends Node2D
 @onready var stop_obstacles: Area2D = $StopObstacles
 @onready var timer_left: Timer = $TimerLeft
 
+#endregion
+
+@onready var pause_menu: ColorRect = $Menu/Pause
+@onready var game_over_menu: ColorRect = $Menu/GameOver
+
+var collected_cans = 0
 var player_pos = 0:
 	set(i):
 		if abs(i) <= 1:
@@ -42,32 +51,51 @@ var can_index = 0:
 		else:
 			can_index = ind
 var can_offset = 0.0
+var end_game := false:
+	set(new_end_game):
+		end_game = new_end_game
+		game_speed = 0.0
+		$Menu/GameOver/MarginContainer/VBoxContainer/VBoxContainer/CansLabel.text = "Collected %d tin cans" % collected_cans
+		game_over_menu.visible = true
+var paused := false:
+	set(new_paused):
+		paused = new_paused
+		pause_menu.visible = paused
+		if paused && !end_game:
+			game_speed = 0.05
+			$Menu/Pause/MarginContainer/VBoxContainer/CansLabel.text = "Collected %d tin cans" % collected_cans
+		elif !end_game:
+			game_speed = 1.0
+var game_speed := 1.0
+
+#endregion
 
 func _ready():
 	player_pos = 0
 	time_in_game = 0
 	_update_player_pos(true)
 	var coll_shape = stop_obstacles.get_child(0).shape as WorldBoundaryShape2D
-	coll_shape.distance = -obs_stop_thresh
+	coll_shape.distance = -obs_stop_thresh * game_speed
 	timer_left.start(dif_timer_speed)
 
 func _physics_process(delta):
-	time_in_game += delta
+	time_in_game += delta * game_speed
 	if time_in_game > dif_time_offset:
-		difficulty = exp((time_in_game - dif_time_offset) / 30) * dif_speed
+		difficulty = exp((time_in_game - dif_time_offset) / 30) * dif_speed * game_speed
 	_update_obstacles()
 
 func _input(event: InputEvent):
 	if event is InputEventKey && event.is_pressed():
-		if event.as_text_keycode() == "Escape":
-			GameMaster.instance._change_current_scene(1)
-		if event.as_text_keycode() == "Up":
+		if event.as_text_keycode() == "Escape" && !end_game:
+			paused = !paused
+			#GameMaster.instance._change_current_scene(1)
+		if event.as_text_keycode() == "Up" && !paused:
 			player_pos -= 1
 			_update_player_pos()
-		elif event.as_text_keycode() == "Down":
+		elif event.as_text_keycode() == "Down" && !paused:
 			player_pos += 1
 			_update_player_pos()
-			
+
 func _get_next_obstacle(left: bool = true) -> Game1Obstacle:
 	if left:
 		for _i in obs_left.size():
@@ -90,36 +118,41 @@ func _get_next_can() -> TinCans:
 
 func _update_obstacles():
 	for obs in obs_left:
-		obs.real_move_speed = obs.move_speed * difficulty
+		obs.real_move_speed = obs.move_speed * difficulty * game_speed
 	for obs in obs_right:
-		obs.real_move_speed = obs.move_speed * difficulty
-	$Obstacles/ObstacleCar1.real_move_speed = $Obstacles/ObstacleCar1.move_speed * sqrt(difficulty)
+		obs.real_move_speed = obs.move_speed * difficulty * game_speed
+	$Obstacles/ObstacleCar1.real_move_speed = $Obstacles/ObstacleCar1.move_speed * sqrt(difficulty) * game_speed
+	for can in tin_cans:
+		can.real_move_speed = can.move_speed * game_speed
 
 func _obstacle_hit(area: Area2D):
 	if area.is_in_group("player"):
-		print("xd")
+		end_game = true
+
+func _can_signal(value: int):
+	collected_cans += value
 
 func _reset_obstacle(area: Area2D):
 	if area is Game1Obstacle:
 		area._reset()
 
 func _on_obstacle_timer():
-	var rand = randf()
-	var can = randf()
-	if rand < 0.50:
-		_obstacle_handle(_get_next_obstacle(true))
-		_can_handle(can, 1)
-	else:
-		_obstacle_handle(_get_next_obstacle(false))
-		_can_handle(can, 2)
-	if rand * 4 > 2.81:
-		can = randf()
-		var car := $Obstacles/ObstacleCar1
-		if !car.active:
-			car.active = true
-		_can_handle(can, 0)
-	print(timer_left.wait_time)
-	timer_left.wait_time = max(dif_timer_speed / sqrt(difficulty), 0.5)
+	if !(paused || end_game):
+		var rand = randf()
+		var can = randf()
+		if rand < 0.50:
+			_obstacle_handle(_get_next_obstacle(true))
+			_can_handle(can, 1)
+		else:
+			_obstacle_handle(_get_next_obstacle(false))
+			_can_handle(can, 2)
+		if can * 4 > 2.81: # Instead of rolling new number, we can use can value. Since it's ready and ya know...
+			can = randf()
+			var car := $Obstacles/ObstacleCar1
+			if !car.active:
+				car.active = true
+			_can_handle(can, 0)
+	timer_left.wait_time = max(dif_timer_speed / sqrt(difficulty), 0.33)
 
 func _obstacle_handle(obstacle: Game1Obstacle):
 	if obstacle != null:
@@ -156,3 +189,12 @@ func _update_player_pos(instant := false):
 		player_tween.tween_property(main_character, "position:y", pos_y, 0.4 * player_fract)
 	else:
 		main_character.position.y = pos_y
+	
+func _unpause_button():
+	paused = false
+
+func _replay():
+	GameMaster.instance._change_current_scene(2)
+
+func _return_to_game():
+	GameMaster.instance._change_current_scene(1)

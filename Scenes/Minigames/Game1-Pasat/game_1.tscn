@@ -109,6 +109,114 @@ shape = SubResource("WorldBoundaryShape2D_7ghyr")
 
 [node name="TimerLeft" type="Timer" parent="."]
 
+[node name="Menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 640.0
+offset_bottom = 480.0
+
+[node name="Pause" type="ColorRect" parent="Menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.11764706, 0.11764706, 0.11764706, 0.24705882)
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/Pause"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Pause/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/Pause/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Menu/Pause/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Game is paused"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Menu/Pause/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "...but is still running!"
+horizontal_alignment = 1
+
+[node name="Unpause" type="Button" parent="Menu/Pause/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Return to game"
+
+[node name="ReturnToMainGame" type="Button" parent="Menu/Pause/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit minigame"
+
+[node name="CansLabel" type="Label" parent="Menu/Pause/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Lorem ipsum papaj cardinale"
+horizontal_alignment = 1
+
+[node name="GameOver" type="ColorRect" parent="Menu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6901961, 0.0627451, 0.078431375, 0.24705882)
+
+[node name="MarginContainer" type="MarginContainer" parent="Menu/GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/GameOver/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu/GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Label" type="Label" parent="Menu/GameOver/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Game Over!"
+horizontal_alignment = 1
+
+[node name="CansLabel" type="Label" parent="Menu/GameOver/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Lorem ipsum papaj cardinale"
+horizontal_alignment = 1
+
+[node name="Replay" type="Button" parent="Menu/GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Play again!"
+
+[node name="ReturnToMainGame" type="Button" parent="Menu/GameOver/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit minigame"
+
 [connection signal="area_entered" from="Obstacles/ObstacleL1" to="." method="_obstacle_hit"]
 [connection signal="area_entered" from="Obstacles/ObstacleL2" to="." method="_obstacle_hit"]
 [connection signal="area_entered" from="Obstacles/ObstacleL3" to="." method="_obstacle_hit"]
@@ -120,7 +228,13 @@ shape = SubResource("WorldBoundaryShape2D_7ghyr")
 [connection signal="area_entered" from="Obstacles/ObstacleR4" to="." method="_obstacle_hit"]
 [connection signal="area_entered" from="Obstacles/ObstacleR5" to="." method="_obstacle_hit"]
 [connection signal="area_entered" from="Obstacles/ObstacleCar1" to="." method="_obstacle_hit"]
+[connection signal="player_hit" from="Obstacles/Can1" to="." method="_can_signal"]
+[connection signal="player_hit" from="Obstacles/Can2" to="." method="_can_signal"]
 [connection signal="area_entered" from="StopObstacles" to="." method="_reset_obstacle"]
 [connection signal="timeout" from="TimerLeft" to="." method="_on_obstacle_timer"]
+[connection signal="pressed" from="Menu/Pause/MarginContainer/VBoxContainer/Unpause" to="." method="_unpause_button"]
+[connection signal="pressed" from="Menu/Pause/MarginContainer/VBoxContainer/ReturnToMainGame" to="." method="_return_to_game"]
+[connection signal="pressed" from="Menu/GameOver/MarginContainer/VBoxContainer/Replay" to="." method="_replay"]
+[connection signal="pressed" from="Menu/GameOver/MarginContainer/VBoxContainer/ReturnToMainGame" to="." method="_return_to_game"]
 
 [editable path="Obstacles/ObstacleCar1"]

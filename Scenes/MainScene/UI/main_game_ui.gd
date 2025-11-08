@@ -23,6 +23,7 @@ signal OnHomeOfficePress
 
 signal on_shop_close
 signal on_game_center_close
+signal on_game_start(id: int)
 
 #endregion
 
@@ -81,3 +82,6 @@ func game_center_quit():
 	gaming_menu.visible = false
 	shop.visible = false
 	on_game_center_close.emit()
+
+func game_button_press(id: int):
+	on_game_start.emit(id)
