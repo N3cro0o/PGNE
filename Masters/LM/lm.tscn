@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://xcb54aki5q00"]
+
+[ext_resource type="Script" uid="uid://dwqy8sc1ku8qi" path="res://Masters/LM/lm.gd" id="1_xgj08"]
+
+[node name="LM" type="Node2D"]
+script = ExtResource("1_xgj08")
