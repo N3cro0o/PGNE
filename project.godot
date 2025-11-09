@@ -22,8 +22,9 @@ boot_splash/minimum_display_time=333
 [autoload]
 
 GM="*res://Masters/GM/gm.tscn"
-OSM="*res://Masters/OM/osm.tscn"
 PM="*res://Masters/PM/pm.tscn"
+OSM="*res://Masters/OM/osm.tscn"
+LM="*res://Masters/LM/lm.tscn"
 
 [display]
 

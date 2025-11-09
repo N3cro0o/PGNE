@@ -8,7 +8,10 @@ static var fridge := {
 	"hotdog": 0,
 	"pizza": 1,
 	"burtella": 0
-}
+}:
+	set(new_fridge):
+		fridge = new_fridge
+		OptionsAndSaveManager._RETURN_CURR_SAVEDATA().fridge = new_fridge
 
 #region Variables
 
@@ -32,6 +35,7 @@ var health: float = 100:
 			health = max_health
 		else:
 			health = hp
+		OptionsAndSaveManager._RETURN_CURR_SAVEDATA().health = health
 var hunger: float = 100:
 	set(hg):
 		if hg < 0:
@@ -40,6 +44,7 @@ var hunger: float = 100:
 			hunger = max_hunger
 		else:
 			hunger = hg
+		OptionsAndSaveManager._RETURN_CURR_SAVEDATA().hunger = hunger
 var bladder: float = 100:
 	set(bl):
 		if bl < 0:
@@ -48,6 +53,7 @@ var bladder: float = 100:
 			bladder = max_bladder
 		else:
 			bladder = bl
+		OptionsAndSaveManager._RETURN_CURR_SAVEDATA().bladder = bladder
 var stress: float = 100:
 	set(sr):
 		if sr < 0:
@@ -56,6 +62,7 @@ var stress: float = 100:
 			stress = max_stress
 		else:
 			stress = sr
+		OptionsAndSaveManager._RETURN_CURR_SAVEDATA().stress = stress
 
 #endregion
 

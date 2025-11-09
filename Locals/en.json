@@ -1,3 +1,8 @@
 {
-
+	"start": "Start game",
+	"options": "Options",
+	"change_save": "Change current save",
+	"lang_en": "English",
+	"lang_pl": "Polish",
+	"lang_sil": "Ślōnsko Godka"
 }

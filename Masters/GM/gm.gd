@@ -6,10 +6,17 @@ static var instance: GameMaster
 
 @export var game_scenes: Array[PackedScene]
 @export var shop_items: Array[ShopItem]
+@export_group("Localization", "loc_")
 
-var tin_cans := 0
+var tin_cans := 0:
+	set(can):
+		if can >= 0:
+			tin_cans = can
+			OptionsAndSaveManager._RETURN_CURR_SAVEDATA().cans = can
 var in_game := false
 var boosted_drops = false
+
+var local_strings_names
 
 #endregion
 

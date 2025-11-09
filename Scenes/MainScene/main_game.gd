@@ -67,6 +67,7 @@ func update_fridge():
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Chlib.text = "Stale bread %d" % PlayerMaster.fridge["bread"]
 	else:
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Chlib.visible = false
+		
 	#if PlayerMaster.fridge["piwko"] > 0:
 		#$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Piwko.visible = true
 		#$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Piwko.text = "Piwko 12.3%% %d" % PlayerMaster.fridge["piwko"]
@@ -77,11 +78,13 @@ func update_fridge():
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Hotdoggers.text = "Hot-dog %d" % PlayerMaster.fridge["hotdog"]
 	else:
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Hotdoggers.visible = false
+		
 	if PlayerMaster.fridge["pizza"] > 0:
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/PizzaZabka.visible = true
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/PizzaZabka.text = "Pizza pepperoni %d" % PlayerMaster.fridge["pizza"]
 	else:
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/PizzaZabka.visible = false
+		
 	if PlayerMaster.fridge["burtella"] > 0:
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Burtella.visible = true
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Burtella.text = "Burtella %d" % PlayerMaster.fridge["burtella"]
@@ -103,6 +106,7 @@ func _start_minigame(id: int):
 func _drink_piwko():
 	if PlayerMaster.fridge["piwko"] > 0:
 		PlayerMaster.fridge["piwko"] -= 1
+		OptionsAndSaveManager._RETURN_CURR_SAVEDATA().fridge["piwko"] -= 1
 		add_bladder(-10)
 		add_stress(30)
 	_update_piwko()
@@ -134,6 +138,7 @@ func _loduwa_button(id: int):
 	var count = PlayerMaster.fridge[item.debug_name]
 	if count > 0:
 		PlayerMaster.fridge[item.debug_name] -= 1
+		OptionsAndSaveManager._RETURN_CURR_SAVEDATA().fridge[item.debug_name] -= 1
 		add_hunger(item.extra_param)
 		# Secrets
 		if item.debug_name == "pizza":
