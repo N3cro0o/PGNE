@@ -15,6 +15,12 @@ const SHOP_LISTING = preload("uid://dejmqxbeg2e2s")
 
 @onready var box_for_shop_listings: VBoxContainer = $Shop/Margin/Body/ShopTabs/Food/Box
 
+var health_label_text
+var hunger_label_text
+var stress_label_text
+var bladder_label_text
+var tin_cans_text
+
 signal OnQuitPress
 signal OnAkademykPress
 signal OnSraczPress
@@ -34,13 +40,14 @@ func _ready() -> void:
 		var listing = SHOP_LISTING.instantiate() as ShopListing
 		listing._load_data(item)
 		box_for_shop_listings.add_child(listing)
+	_localize()
 
 func _process(_delta: float) -> void:
-	hp_label.text = "Sleep: %d" % PlayerMaster.instance.health
-	hunger_label.text = "Hunger: %d" % PlayerMaster.instance.hunger
-	bladder_label.text = "Bladder: %d" % PlayerMaster.instance.bladder
-	fun_label.text = "Fun: %d" % PlayerMaster.instance.stress
-	cans_label.text = "%d Cans" % GameMaster.instance.tin_cans
+	hp_label.text = "%s: %d" % [health_label_text, PlayerMaster.instance.health]
+	hunger_label.text = "%s: %d" % [hunger_label_text, PlayerMaster.instance.hunger]
+	bladder_label.text = "%s: %d" % [bladder_label_text, PlayerMaster.instance.bladder]
+	fun_label.text = "%s: %d" % [stress_label_text, PlayerMaster.instance.stress]
+	cans_label.text = "%d %s" % [GameMaster.instance.tin_cans, tin_cans_text]
 
 #region Room Buttons
 
@@ -85,3 +92,14 @@ func game_center_quit():
 
 func game_button_press(id: int):
 	on_game_start.emit(id)
+
+func _localize():
+	health_label_text = LocalizationMaster._GET_VALUE("health_label")
+	hunger_label_text = LocalizationMaster._GET_VALUE("hunger_label")
+	bladder_label_text = LocalizationMaster._GET_VALUE("bladder_label")
+	stress_label_text = LocalizationMaster._GET_VALUE("stress_label")
+	tin_cans_text = LocalizationMaster._GET_VALUE("tin_cans")
+	$UI/Main/ColorRect/MainMargin/VBox/AkademykBttn.text = LocalizationMaster._GET_VALUE("akademyk")
+	$UI/Main/ColorRect/MainMargin/VBox/SraczBttn.text = LocalizationMaster._GET_VALUE("bathroom")
+	$UI/Main/ColorRect/MainMargin/VBox/Jadlobttn.text = LocalizationMaster._GET_VALUE("dinner")
+	$UI/Main/ColorRect/MainMargin/VBox/HomeOfficeBttn.text = LocalizationMaster._GET_VALUE("home_office")

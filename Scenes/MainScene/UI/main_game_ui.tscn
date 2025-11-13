@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dcw8fpqkpkwmr" path="res://Scenes/MainScene/UI/main_game_ui.gd" id="1_a1mol"]
 [ext_resource type="Texture2D" uid="uid://dhm3vnppmxebd" path="res://Sprites/GUI/icon_cog.png" id="2_a1mol"]
-[ext_resource type="Texture2D" uid="uid://br5doicbce0vs" path="res://Sprites/Temp/icon.svg" id="3_6eet8"]
+[ext_resource type="Texture2D" uid="uid://d1jpehcy4oc0p" path="res://Sprites/MinigamesTextures/Matiz/matiz_face.png" id="3_6eet8"]
 [ext_resource type="Shader" uid="uid://2e474cs8hblb" path="res://Shaders/blur.gdshader" id="4_i503h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a1mol"]
@@ -158,8 +158,7 @@ text = "Wychodek"
 [node name="Jadlobttn" type="Button" parent="UI/Main/ColorRect/MainMargin/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Jadłodal-
-nia"
+text = "Jadłodalnia"
 autowrap_mode = 3
 
 [node name="HomeOfficeBttn" type="Button" parent="UI/Main/ColorRect/MainMargin/VBox"]
@@ -277,7 +276,7 @@ theme_override_constants/v_separation = 16
 columns = 2
 
 [node name="TextureBG" type="TextureRect" parent="GamingMenu/Margin/Body/Games"]
-self_modulate = Color(0.55898935, 0.052298702, 0.28315017, 1)
+modulate = Color(1, 1, 1, 0.76862746)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

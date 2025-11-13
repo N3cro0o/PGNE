@@ -82,6 +82,10 @@ func _localize():
 	$ButtonsMargin/BttnMargin/BttnContainer/Start.text = LocalizationMaster._GET_VALUE("start")
 	$ButtonsMargin/BttnMargin/BttnContainer/Options.text = LocalizationMaster._GET_VALUE("options")
 	$ButtonsMargin/BttnMargin/BttnContainer/Saves.text = LocalizationMaster._GET_VALUE("change_save")
+	$SubMenuMargin/Options/VBoxContainer/LabelSlider/Label.text = LocalizationMaster._GET_VALUE("master_bus")
+	$SubMenuMargin/Options/VBoxContainer/ResetButton.text = LocalizationMaster._GET_VALUE("reset_options")
+	$SubMenuMargin/Options/VBoxContainer/MobileUI.text = LocalizationMaster._GET_VALUE("mobile_toggle")
+	$SubMenuMargin/Options/VBoxContainer/SaveButton.text = LocalizationMaster._GET_VALUE("manual_save")
 	for i in language_section.item_count:
 		var sufix = LocalizationMaster.LOCALIATION_NAMES[i as LocalizationMaster.LOCAL]
 		language_section.set_item_text(i, LocalizationMaster._GET_VALUE("lang_%s" % sufix))

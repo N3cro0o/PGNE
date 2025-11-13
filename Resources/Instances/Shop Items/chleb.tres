@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ShopItem" load_steps=3 format=3 uid="uid://c0pbtc2i26m1b"]
 
-[ext_resource type="Texture2D" uid="uid://br5doicbce0vs" path="res://Sprites/Temp/icon.svg" id="1_8fotb"]
+[ext_resource type="Texture2D" uid="uid://xtb6ey0yqlyj" path="res://Sprites/ShopItems/chlib.png" id="1_8fotb"]
 [ext_resource type="Script" uid="uid://y4j2vokd7yt1" path="res://Resources/Script/shop_item.gd" id="1_dtlpv"]
 
 [resource]

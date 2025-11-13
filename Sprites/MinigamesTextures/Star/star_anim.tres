@@ -1,0 +1,26 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dhn4se6prdd4c"]
+
+[ext_resource type="Texture2D" uid="uid://bbk7cuqux57uo" path="res://Sprites/MinigamesTextures/Star/star_4.png" id="1_70uc1"]
+[ext_resource type="Texture2D" uid="uid://c81a3d1ql8cet" path="res://Sprites/MinigamesTextures/Star/star_3.png" id="2_1utvo"]
+[ext_resource type="Texture2D" uid="uid://cqxlrqpyykh5y" path="res://Sprites/MinigamesTextures/Star/star_2.png" id="3_hmjbs"]
+[ext_resource type="Texture2D" uid="uid://chquqs21sdcnp" path="res://Sprites/MinigamesTextures/Star/star_1.png" id="4_v141n"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_70uc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1utvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_hmjbs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_v141n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]

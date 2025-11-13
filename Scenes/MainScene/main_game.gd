@@ -138,13 +138,13 @@ func _loduwa_button(id: int):
 	var count = PlayerMaster.fridge[item.debug_name]
 	if count > 0:
 		PlayerMaster.fridge[item.debug_name] -= 1
-		OptionsAndSaveManager._RETURN_CURR_SAVEDATA().fridge[item.debug_name] -= 1
 		add_hunger(item.extra_param)
 		# Secrets
 		if item.debug_name == "pizza":
 			print("PIZZA PEPPERONI")
-			var audio := $AudioStreamPlayer
-			audio.play()
+			SoundEffectMaster._PLAY_BY_NAME("pizza_pepperoni")
+			#var audio := $AudioStreamPlayer
+			#audio.play()
 		# Update
 		update_fridge()
 

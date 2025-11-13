@@ -3,6 +3,7 @@ extends Node2D
 #region Variables
 #region Exports
 
+@export var bg_speed = 100.0
 @export_group("Obstacles", "obs_")
 @export_range(0, 300, 1) var obs_stop_thresh = 200.0
 @export var obs_left: Array[Game1Obstacle]
@@ -23,6 +24,7 @@ extends Node2D
 
 @onready var pause_menu: ColorRect = $Menu/Pause
 @onready var game_over_menu: ColorRect = $Menu/GameOver
+@onready var background_sprites = [$BGS/BG, $BGS/BG2, $BGS/BG3]
 
 var collected_cans = 0
 var player_pos = 0:
@@ -55,6 +57,7 @@ var end_game := false:
 	set(new_end_game):
 		end_game = new_end_game
 		game_speed = 0.0
+		difficulty = 0
 		$Menu/GameOver/MarginContainer/VBoxContainer/VBoxContainer/CansLabel.text = "Collected %d tin cans" % collected_cans
 		game_over_menu.visible = true
 var paused := false:
@@ -81,11 +84,17 @@ func _ready():
 func _physics_process(delta):
 	time_in_game += delta * game_speed
 	if time_in_game > dif_time_offset:
-		difficulty = exp((time_in_game - dif_time_offset) / 30) * dif_speed * game_speed
+		difficulty = exp((time_in_game - dif_time_offset) / 30) * dif_speed
 	_update_obstacles()
 
+func _process(delta: float) -> void:
+	for bg in background_sprites:
+		bg.position.x -= bg_speed * delta * difficulty * game_speed
+		if bg.position.x < -340.0:
+			bg.position.x = 910.0
+
 func _input(event: InputEvent):
-	if event is InputEventKey && event.is_pressed():
+	if event is InputEventKey && event.is_pressed() && !end_game:
 		if event.as_text_keycode() == "Escape" && !end_game:
 			paused = !paused
 			#GameMaster.instance._change_current_scene(1)

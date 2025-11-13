@@ -25,6 +25,7 @@ GM="*res://Masters/GM/gm.tscn"
 PM="*res://Masters/PM/pm.tscn"
 OSM="*res://Masters/OM/osm.tscn"
 LM="*res://Masters/LM/lm.tscn"
+SFX="*res://Masters/SFX/sfx.tscn"
 
 [display]
 
@@ -36,6 +37,13 @@ window/stretch/aspect="keep_width"
 [dotnet]
 
 project/assembly_name="PGNE"
+
+[editor]
+
+movie_writer/mix_rate=12000
+movie_writer/video_quality=0.66
+movie_writer/movie_file="PGNE.avi"
+movie_writer/fps=30
 
 [global_group]
 
