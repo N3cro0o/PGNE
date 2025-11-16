@@ -106,12 +106,14 @@ static func _SAVE():
 		var inst = OptionsAndSaveManager.instance
 		inst._store_optionfile(inst.data)
 		inst._store_gamedata(inst.curr_savefile, inst.game_datas[inst.curr_savefile])
-	if SAVE_THREAD == null:
-		SAVE_THREAD = Thread.new()
-		SAVE_THREAD.start(thread_clausule)
-	else:
-		SAVE_THREAD.wait_to_finish()
-		SAVE_THREAD.start(thread_clausule)
+	#if SAVE_THREAD == null:
+		#SAVE_THREAD = Thread.new()
+		#SAVE_THREAD.start(thread_clausule)
+	#else:
+		#if SAVE_THREAD.is_alive():
+			#SAVE_THREAD.wait_to_finish()
+		#SAVE_THREAD.start(thread_clausule)
+	thread_clausule.call()
 
 static func _RETURN_CURR_SAVEDATA() -> SavefileData:
 	var inst = OptionsAndSaveManager.instance
