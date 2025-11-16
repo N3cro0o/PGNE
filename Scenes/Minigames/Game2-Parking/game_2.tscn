@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5f6uohkk4tll"]
+
+[ext_resource type="Script" uid="uid://25owo84btmqr" path="res://Scenes/Minigames/Game2-Parking/game_2.gd" id="1_2314o"]
+[ext_resource type="Script" uid="uid://b86pg7sv40cbg" path="res://Scenes/Minigames/Game2-Parking/Scripts/parking_space.gd" id="2_bki3j"]
+[ext_resource type="PackedScene" uid="uid://cvnb0tyvpewaa" path="res://Scenes/Minigames/Game2-Parking/Vehicle/vehicle.tscn" id="3_3pb7h"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2314o"]
+
+[node name="game_2" type="Node2D" node_paths=PackedStringArray("veh_current_vehicle")]
+script = ExtResource("1_2314o")
+veh_current_vehicle = NodePath("Vehicles/CurrVehicle")
+
+[node name="BG" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(325.5, 242.99998)
+scale = Vector2(671.00006, 502.00003)
+texture = SubResource("PlaceholderTexture2D_2314o")
+
+[node name="ParkingSpaces" type="Node2D" parent="."]
+position = Vector2(0, -1)
+
+[node name="P1" type="Node2D" parent="ParkingSpaces"]
+position = Vector2(67, 59)
+script = ExtResource("2_bki3j")
+
+[node name="P2" type="Node2D" parent="ParkingSpaces"]
+position = Vector2(132, 58)
+script = ExtResource("2_bki3j")
+
+[node name="P3" type="Node2D" parent="ParkingSpaces"]
+position = Vector2(199, 57)
+script = ExtResource("2_bki3j")
+
+[node name="Vehicles" type="Node2D" parent="."]
+
+[node name="CurrVehicle" parent="Vehicles" instance=ExtResource("3_3pb7h")]
+position = Vector2(89, 412)
+
+[node name="Obstacles" type="Node2D" parent="."]

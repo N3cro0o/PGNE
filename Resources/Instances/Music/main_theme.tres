@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MusicHolder" load_steps=3 format=3 uid="uid://c7fuhkgs45yw3"]
+
+[ext_resource type="Script" uid="uid://c3qoivuaqxll5" path="res://Resources/Script/music_holder.gd" id="1_r31n5"]
+[ext_resource type="AudioStream" uid="uid://bpad386deqh48" path="res://Audio/Music/Morning-Routine-Lofi-Study-Music(chosic.com).mp3" id="2_cax8d"]
+
+[resource]
+script = ExtResource("1_r31n5")
+loop = true
+loop_points = Array[Vector2]([Vector2(23.746, 71.81)])
+start_from_start = true
+name = "main_theme"
+stream = ExtResource("2_cax8d")
+autoplay = true
+metadata/_custom_type_script = "uid://c3qoivuaqxll5"

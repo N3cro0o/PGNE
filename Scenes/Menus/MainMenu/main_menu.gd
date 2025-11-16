@@ -26,6 +26,7 @@ func _ready():
 	var data := OptionsAndSaveManager.instance.data
 	master_slider.value = data.master
 	mobile_ui_toggle.button_pressed = data.mobile_toggle
+	SoundEffectMaster._PLAY_MUSIC_BY_NAME("main_theme")
 	# Create locals items
 	for local in LocalizationMaster.LOCAL.values():
 		var sufix = LocalizationMaster.LOCALIATION_NAMES[local]
@@ -61,7 +62,7 @@ func _input(event: InputEvent):
 
 func _master_slider(value: float):
 	print(linear_to_db(value))
-	OptionsAndSaveManager.instance.data.master = value
+	OptionsAndSaveManager.instance.data._update_master_value(value)
 
 func _save_request():
 	print("Save")

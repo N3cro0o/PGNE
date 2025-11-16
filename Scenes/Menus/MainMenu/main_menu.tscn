@@ -146,6 +146,7 @@ text = "Manual save"
 layout_mode = 2
 
 [node name="MobileUI" type="CheckButton" parent="SubMenuMargin/Options/VBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Mobile controls    "

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SoundHolder" load_steps=3 format=3 uid="uid://cn2iyyjka84ey"]
 
 [ext_resource type="Script" uid="uid://bjggp4jlp3wv7" path="res://Resources/Script/sound_holder.gd" id="1_d6231"]
-[ext_resource type="AudioStream" uid="uid://3tti48gm7wn5" path="res://Sounds/pizza pepperoni.mp3" id="2_8tyw0"]
+[ext_resource type="AudioStream" uid="uid://3tti48gm7wn5" path="res://Audio/Memaski/pizza pepperoni.mp3" id="2_8tyw0"]
 
 [resource]
 script = ExtResource("1_d6231")

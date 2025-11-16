@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundHolder" load_steps=3 format=3 uid="uid://bjujioik7khfe"]
+
+[ext_resource type="Script" uid="uid://bjggp4jlp3wv7" path="res://Resources/Script/sound_holder.gd" id="1_xgwos"]
+[ext_resource type="AudioStream" uid="uid://cpkhhtg6cww7t" path="res://Audio/Sounds/beer_open.wav" id="2_3hdob"]
+
+[resource]
+script = ExtResource("1_xgwos")
+name = "piwko"
+stream = ExtResource("2_3hdob")
+bus = "Sounds"
+metadata/_custom_type_script = "uid://bjggp4jlp3wv7"

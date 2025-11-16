@@ -13,7 +13,7 @@
 [ext_resource type="Shader" uid="uid://2e474cs8hblb" path="res://Shaders/blur.gdshader" id="9_i5ls4"]
 [ext_resource type="Script" uid="uid://clhyhse11j2kt" path="res://Components/PolygonButton/polygon_button.gd" id="9_jmspi"]
 [ext_resource type="Texture2D" uid="uid://cw4n3ye77g76y" path="res://Sprites/BG/CompressedBG/akademyk_small.png" id="9_ktdyc"]
-[ext_resource type="AudioStream" uid="uid://3tti48gm7wn5" path="res://Sounds/pizza pepperoni.mp3" id="9_ncjln"]
+[ext_resource type="AudioStream" uid="uid://3tti48gm7wn5" path="res://Audio/Memaski/pizza pepperoni.mp3" id="9_ncjln"]
 [ext_resource type="Texture2D" uid="uid://bcy1bpjmy3ful" path="res://Sprites/BG/wittygowo.jpg" id="10_oqfto"]
 [ext_resource type="Texture2D" uid="uid://pwryl0vvpcc0" path="res://Sprites/BG/CompressedBG/jadlodalnia_small.png" id="12_ktdyc"]
 [ext_resource type="Texture2D" uid="uid://t0ucds1melv4" path="res://Sprites/BG/CompressedBG/officium_small.png" id="13_7lkbv"]

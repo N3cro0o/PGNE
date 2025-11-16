@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://byakp5eidib83"]
 
-[ext_resource type="Script" uid="uid://cwig6qcbe8sss" path="res://Scenes/Minigames/Game1-Pasat/pasat.gd" id="1_0215e"]
+[ext_resource type="Script" uid="uid://cwig6qcbe8sss" path="res://Scenes/Minigames/Game1-Pasat/matiz.gd" id="1_0215e"]
 [ext_resource type="Texture2D" uid="uid://d3m4j7ec6xp0f" path="res://Sprites/MinigamesTextures/Road/Road_1.png" id="2_6050j"]
 [ext_resource type="Texture2D" uid="uid://br5doicbce0vs" path="res://Sprites/Temp/icon.svg" id="2_sbx25"]
 [ext_resource type="PackedScene" uid="uid://dvdlispr17ae8" path="res://Scenes/Minigames/Game1-Pasat/Obstacle/obstacle.tscn" id="3_7ghyr"]
@@ -79,12 +79,12 @@ horizontal_alignment = 1
 [node name="Unpause" type="Button" parent="Menu/Pause/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Return to game"
+text = "resume_minigame"
 
 [node name="ReturnToMainGame" type="Button" parent="Menu/Pause/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Quit minigame"
+text = "quit_minigame"
 
 [node name="CansLabel" type="Label" parent="Menu/Pause/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -132,12 +132,12 @@ horizontal_alignment = 1
 [node name="Replay" type="Button" parent="Menu/GameOver/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Play again!"
+text = "replay_minigame"
 
 [node name="ReturnToMainGame" type="Button" parent="Menu/GameOver/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Quit minigame"
+text = "quit_minigame"
 
 [node name="BGS" type="Node2D" parent="."]
 z_index = -5
@@ -243,6 +243,16 @@ position = Vector2(850, 386)
 position = Vector2(850, 66)
 move_speed = 500.0
 
+[node name="Sprite2D" parent="Obstacles/ObstacleCar1" index="0"]
+visible = false
+position = Vector2(0, -7.0000076)
+scale = Vector2(0.4224138, 1.2129033)
+texture = ExtResource("4_qgkjc")
+
+[node name="CollisionShape2D" parent="Obstacles/ObstacleCar1" index="1"]
+position = Vector2(5, 3)
+shape = SubResource("CapsuleShape2D_qgkjc")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Obstacles/ObstacleCar1"]
 position = Vector2(0, 11.000001)
 rotation = 3.1415927
@@ -260,16 +270,6 @@ scale = Vector2(0.8, -0.8)
 sprite_frames = ExtResource("6_tk28q")
 autoplay = "default"
 frame_progress = 0.8244157
-
-[node name="Sprite2D" parent="Obstacles/ObstacleCar1" index="2"]
-visible = false
-position = Vector2(0, -7.0000076)
-scale = Vector2(0.4224138, 1.2129033)
-texture = ExtResource("4_qgkjc")
-
-[node name="CollisionShape2D" parent="Obstacles/ObstacleCar1" index="3"]
-position = Vector2(5, 3)
-shape = SubResource("CapsuleShape2D_qgkjc")
 
 [node name="Can1" parent="Obstacles" instance=ExtResource("4_mf4o6")]
 position = Vector2(850, 314)

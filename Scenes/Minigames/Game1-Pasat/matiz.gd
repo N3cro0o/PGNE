@@ -58,6 +58,11 @@ var end_game := false:
 		end_game = new_end_game
 		game_speed = 0.0
 		difficulty = 0
+		player_tween.kill()
+		$Obstacles/ObstacleCar1/AnimatedSprite2D.stop()
+		$Obstacles/ObstacleCar1/Shadow.stop()
+		$MainCharacter/Main.stop()
+		$MainCharacter/Shadow.stop()
 		$Menu/GameOver/MarginContainer/VBoxContainer/VBoxContainer/CansLabel.text = "Collected %d tin cans" % collected_cans
 		game_over_menu.visible = true
 var paused := false:
@@ -66,10 +71,11 @@ var paused := false:
 		pause_menu.visible = paused
 		if paused && !end_game:
 			game_speed = 0.05
-			$Menu/Pause/MarginContainer/VBoxContainer/CansLabel.text = "Collected %d tin cans" % collected_cans
+			$Menu/Pause/MarginContainer/VBoxContainer/CansLabel.text = can_label % collected_cans
 		elif !end_game:
 			game_speed = 1.0
 var game_speed := 1.0
+var can_label := "Collected %d tin cans"
 
 #endregion
 
@@ -80,6 +86,7 @@ func _ready():
 	var coll_shape = stop_obstacles.get_child(0).shape as WorldBoundaryShape2D
 	coll_shape.distance = -obs_stop_thresh * game_speed
 	timer_left.start(dif_timer_speed)
+	_localize()
 
 func _physics_process(delta):
 	time_in_game += delta * game_speed
@@ -207,3 +214,16 @@ func _replay():
 
 func _return_to_game():
 	GameMaster.instance._change_current_scene(1)
+
+func _localize():
+	$Menu/Pause/MarginContainer/VBoxContainer/VBoxContainer/Label.text = LocalizationMaster._GET_VALUE("paused_label_1")
+	$Menu/Pause/MarginContainer/VBoxContainer/VBoxContainer/Label2.text = LocalizationMaster._GET_VALUE("paused_label_2")
+	$Menu/GameOver/MarginContainer/VBoxContainer/VBoxContainer/Label.text = LocalizationMaster._GET_VALUE("gameover_label_1")
+	can_label = LocalizationMaster._GET_VALUE("cans_score_%s")
+	var bttn_text = $Menu/Pause/MarginContainer/VBoxContainer/Unpause.text
+	$Menu/Pause/MarginContainer/VBoxContainer/Unpause.text = LocalizationMaster._GET_VALUE(bttn_text)
+	bttn_text = $Menu/Pause/MarginContainer/VBoxContainer/ReturnToMainGame.text
+	$Menu/Pause/MarginContainer/VBoxContainer/ReturnToMainGame.text = LocalizationMaster._GET_VALUE(bttn_text)
+	$Menu/GameOver/MarginContainer/VBoxContainer/ReturnToMainGame.text = LocalizationMaster._GET_VALUE(bttn_text)
+	bttn_text = $Menu/GameOver/MarginContainer/VBoxContainer/Replay.text
+	$Menu/GameOver/MarginContainer/VBoxContainer/Replay.text = LocalizationMaster._GET_VALUE(bttn_text)

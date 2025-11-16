@@ -43,6 +43,7 @@ func _update_bg(id: int):
 func _ready():
 	akademyk_button()
 	base_pos_y = ziutek.position.y
+	_localize()
 
 #region Functional functions
 
@@ -182,3 +183,15 @@ func _get_mouse_click(event: InputEvent):
 		pass
 
 #endregion
+
+func _localize():
+	var food_0 = $GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Chlib
+	var food_1 = $GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Piwko
+	var food_2 = $GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Hotdoggers
+	var food_3 = $GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/PizzaZabka
+	var food_4 = $GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Burtella
+	food_0.text = LocalizationMaster._GET_VALUE("chlib")
+	food_1.text = LocalizationMaster._GET_VALUE("piwko")
+	food_2.text = LocalizationMaster._GET_VALUE("hotdog")
+	food_3.text = LocalizationMaster._GET_VALUE("pizza")
+	food_4.text = LocalizationMaster._GET_VALUE("burtella")

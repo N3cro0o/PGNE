@@ -15,7 +15,7 @@ func _ready() -> void:
 func _load_data(data: ShopItem):
 	await self.ready
 	cost_label.text = str(data.cost) + " Cans"
-	name_label.text = str(data.name)
+	name_label.text = LocalizationMaster._GET_VALUE(data.debug_name)
 	image.texture = data.image
 	cost = data.cost
 	debug_name = data.debug_name

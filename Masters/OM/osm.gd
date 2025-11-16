@@ -13,6 +13,10 @@ class SaveOptionData extends Node:
 	func _init(master_vol := 0.0):
 		master = master_vol
 	
+	func _update_master_value(value: float):
+		master = value
+		AudioServer.set_bus_volume_db(SoundEffectMaster.MASTER_BUS_ID, linear_to_db(value))
+	
 	func _to_dictionary() -> Dictionary:
 		return {
 			"master": master,

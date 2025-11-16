@@ -275,7 +275,7 @@ theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 columns = 2
 
-[node name="TextureBG" type="TextureRect" parent="GamingMenu/Margin/Body/Games"]
+[node name="MissAHole" type="TextureRect" parent="GamingMenu/Margin/Body/Games"]
 modulate = Color(1, 1, 1, 0.76862746)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -284,12 +284,12 @@ texture = ExtResource("3_6eet8")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Control" type="Polygon2D" parent="GamingMenu/Margin/Body/Games/TextureBG"]
+[node name="Control" type="Polygon2D" parent="GamingMenu/Margin/Body/Games/MissAHole"]
 visible = false
 material = SubResource("ShaderMaterial_lyey3")
 polygon = PackedVector2Array(0, 0, 196, 0, 196, 169, 0, 169)
 
-[node name="Button" type="Button" parent="GamingMenu/Margin/Body/Games/TextureBG"]
+[node name="Button" type="Button" parent="GamingMenu/Margin/Body/Games/MissAHole"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -297,7 +297,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 52
-text = "Miss-a-Hole"
+text = "miss_a_hole"
+flat = true
+autowrap_mode = 2
+
+[node name="PasatParking" type="TextureRect" parent="GamingMenu/Margin/Body/Games"]
+modulate = Color(1, 1, 1, 0.76862746)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("3_6eet8")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Control" type="Polygon2D" parent="GamingMenu/Margin/Body/Games/PasatParking"]
+visible = false
+material = SubResource("ShaderMaterial_lyey3")
+polygon = PackedVector2Array(0, 0, 196, 0, 196, 169, 0, 169)
+
+[node name="Button" type="Button" parent="GamingMenu/Margin/Body/Games/PasatParking"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 52
+text = "pasat_game"
 flat = true
 autowrap_mode = 2
 
@@ -344,5 +370,6 @@ text = "Leave"
 [connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/Jadlobttn" to="." method="_jadlodalnia_press"]
 [connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/HomeOfficeBttn" to="." method="_home_office_press"]
 [connection signal="pressed" from="Shop/Margin/Body/QuitButton" to="." method="shop_quit"]
-[connection signal="pressed" from="GamingMenu/Margin/Body/Games/TextureBG/Button" to="." method="game_button_press" binds= [0]]
+[connection signal="pressed" from="GamingMenu/Margin/Body/Games/MissAHole/Button" to="." method="game_button_press" binds= [0]]
+[connection signal="pressed" from="GamingMenu/Margin/Body/Games/PasatParking/Button" to="." method="game_button_press" binds= [0]]
 [connection signal="pressed" from="GamingMenu/Margin/Body/QuitButton" to="." method="game_center_quit"]
