@@ -302,6 +302,7 @@ flat = true
 autowrap_mode = 2
 
 [node name="PasatParking" type="TextureRect" parent="GamingMenu/Margin/Body/Games"]
+visible = false
 modulate = Color(1, 1, 1, 0.76862746)
 layout_mode = 2
 size_flags_horizontal = 3

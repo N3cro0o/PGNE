@@ -28,6 +28,9 @@ static func _PLAY_BY_ID(sound_id: int):
 static func _PLAY_BY_NAME(sound_name: String):
 	SoundEffectMaster.instance._play_sound_by_name(sound_name)
 
+static func _STOP_SOUNDS():
+	SoundEffectMaster.instance._stop_all_sounds()
+
 func _ready():
 	instance = self
 	
@@ -47,6 +50,9 @@ func _play_sound_by_name(text: String):
 			_play(s, SoundEnum.Audio)
 			return
 	push_error("play_sound_by_name() wrong sound_name")
+
+func _stop_all_sounds():
+	$Sounds.stop()
 
 func _play(sound: SoundHolder, what: SoundEnum = SoundEnum.Audio) -> bool:
 	if sound == null:

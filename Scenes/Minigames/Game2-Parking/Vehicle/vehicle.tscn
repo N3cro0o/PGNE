@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cvnb0tyvpewaa"]
+[gd_scene load_steps=7 format=3 uid="uid://cvnb0tyvpewaa"]
 
 [ext_resource type="Script" uid="uid://d2a6eldg83i1q" path="res://Scenes/Minigames/Game2-Parking/Vehicle/vehicle.gd" id="1_qyedd"]
 [ext_resource type="Texture2D" uid="uid://duqegayel7q61" path="res://Sprites/MinigamesTextures/Pasat/pasat_spritesheet.png" id="1_xstbh"]
@@ -13,6 +13,9 @@ region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xy1ii"]
 height = 38.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qyedd"]
+radius = 3.0
 
 [node name="Vehicle" type="Area2D"]
 script = ExtResource("1_qyedd")
@@ -29,3 +32,12 @@ texture = SubResource("AtlasTexture_7guc8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_xy1ii")
+
+[node name="Middle" type="Area2D" parent="." groups=["player"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Middle"]
+shape = SubResource("CircleShape2D_qyedd")
+
+[connection signal="area_entered" from="." to="." method="_on_vehicle_hit"]

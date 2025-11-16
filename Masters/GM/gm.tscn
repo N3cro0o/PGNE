@@ -15,3 +15,8 @@
 script = ExtResource("1_2s2pk")
 game_scenes = Array[PackedScene]([ExtResource("2_vtv0w"), ExtResource("3_50g81"), ExtResource("4_7toyk")])
 shop_items = Array[ExtResource("4_fd3iw")]([ExtResource("5_wjyef"), ExtResource("6_rab1n"), ExtResource("7_7toyk"), ExtResource("8_fc3s1"), ExtResource("9_ty7db")])
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+
+[connection signal="timeout" from="Timer" to="." method="_autosave"]

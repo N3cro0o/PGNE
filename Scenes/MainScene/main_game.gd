@@ -108,8 +108,9 @@ func _drink_piwko():
 	if PlayerMaster.fridge["piwko"] > 0:
 		PlayerMaster.fridge["piwko"] -= 1
 		OptionsAndSaveManager._RETURN_CURR_SAVEDATA().fridge["piwko"] -= 1
-		add_bladder(-10)
+		add_bladder(-15)
 		add_stress(30)
+		SoundEffectMaster._PLAY_BY_NAME("piwko")
 	_update_piwko()
 
 func quit_button():
@@ -144,8 +145,8 @@ func _loduwa_button(id: int):
 		if item.debug_name == "pizza":
 			print("PIZZA PEPPERONI")
 			SoundEffectMaster._PLAY_BY_NAME("pizza_pepperoni")
-			#var audio := $AudioStreamPlayer
-			#audio.play()
+		else:
+			SoundEffectMaster._PLAY_BY_NAME("eat")
 		# Update
 		update_fridge()
 

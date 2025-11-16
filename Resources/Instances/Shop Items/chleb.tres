@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_dtlpv")
-debug_name = "chlib"
+debug_name = "bread"
 name = "Stale Bread"
 cost = 5
 description = "Stale bread, nothing more to add"

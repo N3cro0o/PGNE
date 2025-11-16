@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5f6uohkk4tll"]
+[gd_scene load_steps=7 format=3 uid="uid://c5f6uohkk4tll"]
 
 [ext_resource type="Script" uid="uid://25owo84btmqr" path="res://Scenes/Minigames/Game2-Parking/game_2.gd" id="1_2314o"]
-[ext_resource type="Script" uid="uid://b86pg7sv40cbg" path="res://Scenes/Minigames/Game2-Parking/Scripts/parking_space.gd" id="2_bki3j"]
+[ext_resource type="PackedScene" uid="uid://d4a633tkg7xxr" path="res://Scenes/Minigames/Game1-Pasat/MinigameMenus/minigame_menus.tscn" id="2_7guc8"]
+[ext_resource type="Script" uid="uid://50diyriqlnnt" path="res://Scenes/Minigames/Game2-Parking/Scripts/parking_spaces_controller.gd" id="2_j6cc2"]
 [ext_resource type="PackedScene" uid="uid://cvnb0tyvpewaa" path="res://Scenes/Minigames/Game2-Parking/Vehicle/vehicle.tscn" id="3_3pb7h"]
+[ext_resource type="PackedScene" uid="uid://dqbuupacqs4k2" path="res://Scenes/Minigames/Game2-Parking/ParkingLot/parking_lot.tscn" id="3_j6cc2"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_2314o"]
 
@@ -10,7 +12,10 @@
 script = ExtResource("1_2314o")
 veh_current_vehicle = NodePath("Vehicles/CurrVehicle")
 
+[node name="Menu" parent="." instance=ExtResource("2_7guc8")]
+
 [node name="BG" type="Sprite2D" parent="."]
+visible = false
 z_index = -5
 position = Vector2(325.5, 242.99998)
 scale = Vector2(671.00006, 502.00003)
@@ -18,22 +23,41 @@ texture = SubResource("PlaceholderTexture2D_2314o")
 
 [node name="ParkingSpaces" type="Node2D" parent="."]
 position = Vector2(0, -1)
+script = ExtResource("2_j6cc2")
 
-[node name="P1" type="Node2D" parent="ParkingSpaces"]
-position = Vector2(67, 59)
-script = ExtResource("2_bki3j")
+[node name="P1" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
+position = Vector2(70, 60)
 
-[node name="P2" type="Node2D" parent="ParkingSpaces"]
-position = Vector2(132, 58)
-script = ExtResource("2_bki3j")
+[node name="P2" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
+position = Vector2(150, 60)
 
-[node name="P3" type="Node2D" parent="ParkingSpaces"]
-position = Vector2(199, 57)
-script = ExtResource("2_bki3j")
+[node name="P3" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
+position = Vector2(230, 60)
+
+[node name="P4" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
+position = Vector2(310, 60)
+
+[node name="P5" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
+position = Vector2(390, 60)
+
+[node name="P6" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
+position = Vector2(470, 60)
+
+[node name="P7" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
+position = Vector2(550, 60)
 
 [node name="Vehicles" type="Node2D" parent="."]
 
 [node name="CurrVehicle" parent="Vehicles" instance=ExtResource("3_3pb7h")]
-position = Vector2(89, 412)
+position = Vector2(90, 420)
 
 [node name="Obstacles" type="Node2D" parent="."]
+
+[connection signal="player_inside" from="ParkingSpaces/P1" to="." method="_on_player_entering_parking"]
+[connection signal="player_inside" from="ParkingSpaces/P2" to="." method="_on_player_entering_parking"]
+[connection signal="player_inside" from="ParkingSpaces/P3" to="." method="_on_player_entering_parking"]
+[connection signal="player_inside" from="ParkingSpaces/P4" to="." method="_on_player_entering_parking"]
+[connection signal="player_inside" from="ParkingSpaces/P5" to="." method="_on_player_entering_parking"]
+[connection signal="player_inside" from="ParkingSpaces/P6" to="." method="_on_player_entering_parking"]
+[connection signal="player_inside" from="ParkingSpaces/P7" to="." method="_on_player_entering_parking"]
+[connection signal="hit_other_vehicle" from="Vehicles/CurrVehicle" to="." method="_check_collision"]

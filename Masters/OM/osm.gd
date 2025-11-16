@@ -7,6 +7,8 @@ const OPTIONS_FILE = "user://config.wust"
 
 class SaveOptionData extends Node:
 	var master := 0.0
+	var sounds := 0.0
+	var music := 0.0
 	var localization := LocalizationMaster.LOCAL.English
 	var mobile_toggle := false
 	
@@ -17,9 +19,19 @@ class SaveOptionData extends Node:
 		master = value
 		AudioServer.set_bus_volume_db(SoundEffectMaster.MASTER_BUS_ID, linear_to_db(value))
 	
+	func _update_sounds_value(value: float):
+		sounds = value
+		AudioServer.set_bus_volume_db(SoundEffectMaster.SOUNDS_BUS_ID, linear_to_db(value))
+	
+	func _update_music_value(value: float):
+		music = value
+		AudioServer.set_bus_volume_db(SoundEffectMaster.MUSIC_BUS_ID, linear_to_db(value))
+	
 	func _to_dictionary() -> Dictionary:
 		return {
 			"master": master,
+			"sounds": sounds,
+			"music": music,
 			"localization": localization,
 			"mobile_toggle": mobile_toggle
 		}
@@ -29,6 +41,10 @@ class SaveOptionData extends Node:
 		var keys = dict.keys()
 		if keys.find("master") != -1:
 			output.master = dict["master"]
+		if keys.find("sounds") != -1:
+			output.sounds = dict["sounds"]
+		if keys.find("music") != -1:
+			output.music = dict["music"]
 		if keys.find("localization") != -1:
 			output.localization = dict["localization"]
 		if keys.find("mobile_toggle") != -1:
@@ -77,6 +93,8 @@ class SavefileData extends Node:
 			output.fridge = dict["fridge"]
 		return output
 
+static var SAVE_THREAD: Thread
+
 var data: SaveOptionData = null
 var game_datas: Array[SavefileData]
 var curr_savefile = 0
@@ -84,9 +102,16 @@ var curr_savefile = 0
 signal load_done
 
 static func _SAVE():
-	var inst = OptionsAndSaveManager.instance
-	inst._store_optionfile(inst.data)
-	inst._store_gamedata(inst.curr_savefile, inst.game_datas[inst.curr_savefile])
+	var thread_clausule = func():
+		var inst = OptionsAndSaveManager.instance
+		inst._store_optionfile(inst.data)
+		inst._store_gamedata(inst.curr_savefile, inst.game_datas[inst.curr_savefile])
+	if SAVE_THREAD == null:
+		SAVE_THREAD = Thread.new()
+		SAVE_THREAD.start(thread_clausule)
+	else:
+		SAVE_THREAD.wait_to_finish()
+		SAVE_THREAD.start(thread_clausule)
 
 static func _RETURN_CURR_SAVEDATA() -> SavefileData:
 	var inst = OptionsAndSaveManager.instance

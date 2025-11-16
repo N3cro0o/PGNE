@@ -7,6 +7,6 @@
 script = ExtResource("1_d6231")
 name = "pizza_pepperoni"
 stream = ExtResource("2_8tyw0")
-volume = -20.0
+volume = -5.0
 bus = "Sounds"
 metadata/_custom_type_script = "uid://bjggp4jlp3wv7"

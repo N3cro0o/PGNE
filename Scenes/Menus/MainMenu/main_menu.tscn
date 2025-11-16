@@ -111,7 +111,6 @@ theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 20
 
 [node name="Options" type="Control" parent="SubMenuMargin"]
-visible = false
 layout_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="SubMenuMargin/Options"]
@@ -124,23 +123,44 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="LabelSlider" type="VBoxContainer" parent="SubMenuMargin/Options/VBoxContainer"]
+[node name="MasterSlider" type="VBoxContainer" parent="SubMenuMargin/Options/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SubMenuMargin/Options/VBoxContainer/LabelSlider"]
+[node name="Label" type="Label" parent="SubMenuMargin/Options/VBoxContainer/MasterSlider"]
 layout_mode = 2
 text = "Master"
 
-[node name="HSlider" type="HSlider" parent="SubMenuMargin/Options/VBoxContainer/LabelSlider"]
+[node name="HSlider" type="HSlider" parent="SubMenuMargin/Options/VBoxContainer/MasterSlider"]
 layout_mode = 2
 max_value = 1.0
 step = 0.01
+value = 1.0
 
-[node name="SaveButton" type="Button" parent="SubMenuMargin/Options/VBoxContainer"]
-custom_minimum_size = Vector2(180, 0)
+[node name="SoundsSlider" type="VBoxContainer" parent="SubMenuMargin/Options/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Manual save"
+
+[node name="Label" type="Label" parent="SubMenuMargin/Options/VBoxContainer/SoundsSlider"]
+layout_mode = 2
+text = "Sounds"
+
+[node name="HSlider" type="HSlider" parent="SubMenuMargin/Options/VBoxContainer/SoundsSlider"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="MusicSlider" type="VBoxContainer" parent="SubMenuMargin/Options/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubMenuMargin/Options/VBoxContainer/MusicSlider"]
+layout_mode = 2
+text = "Music"
+
+[node name="HSlider" type="HSlider" parent="SubMenuMargin/Options/VBoxContainer/MusicSlider"]
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
 
 [node name="LanguageSelect" type="OptionButton" parent="SubMenuMargin/Options/VBoxContainer"]
 layout_mode = 2
@@ -151,17 +171,28 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Mobile controls    "
 
-[node name="ResetButton" type="Button" parent="SubMenuMargin/Options/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SubMenuMargin/Options/VBoxContainer"]
+layout_mode = 2
+
+[node name="ResetButton" type="Button" parent="SubMenuMargin/Options/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(180, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Reset options
 "
 
+[node name="SaveButton" type="Button" parent="SubMenuMargin/Options/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Manual save"
+
 [connection signal="gui_input" from="ButtonsMargin" to="." method="_hide_panels"]
 [connection signal="pressed" from="ButtonsMargin/BttnMargin/BttnContainer/Start" to="." method="_start_button_pressed"]
 [connection signal="pressed" from="ButtonsMargin/BttnMargin/BttnContainer/Options" to="." method="_option_button_pressed"]
-[connection signal="value_changed" from="SubMenuMargin/Options/VBoxContainer/LabelSlider/HSlider" to="." method="_master_slider"]
-[connection signal="pressed" from="SubMenuMargin/Options/VBoxContainer/SaveButton" to="." method="_save_request"]
+[connection signal="value_changed" from="SubMenuMargin/Options/VBoxContainer/MasterSlider/HSlider" to="." method="_master_slider"]
+[connection signal="value_changed" from="SubMenuMargin/Options/VBoxContainer/SoundsSlider/HSlider" to="." method="_sounds_slider"]
+[connection signal="value_changed" from="SubMenuMargin/Options/VBoxContainer/MusicSlider/HSlider" to="." method="_music_slider"]
 [connection signal="item_selected" from="SubMenuMargin/Options/VBoxContainer/LanguageSelect" to="." method="_select_lang"]
 [connection signal="toggled" from="SubMenuMargin/Options/VBoxContainer/MobileUI" to="." method="_mobile_toggle"]
+[connection signal="pressed" from="SubMenuMargin/Options/VBoxContainer/HBoxContainer/SaveButton" to="." method="_save_request"]

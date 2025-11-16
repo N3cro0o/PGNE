@@ -63,7 +63,7 @@ var end_game := false:
 		$Obstacles/ObstacleCar1/Shadow.stop()
 		$MainCharacter/Main.stop()
 		$MainCharacter/Shadow.stop()
-		$Menu/GameOver/MarginContainer/VBoxContainer/VBoxContainer/CansLabel.text = "Collected %d tin cans" % collected_cans
+		$Menu/GameOver/MarginContainer/VBoxContainer/VBoxContainer/CansLabel.text = can_label % collected_cans
 		game_over_menu.visible = true
 var paused := false:
 	set(new_paused):
@@ -107,9 +107,11 @@ func _input(event: InputEvent):
 			#GameMaster.instance._change_current_scene(1)
 		if event.as_text_keycode() == "Up" && !paused:
 			player_pos -= 1
+			SoundEffectMaster._PLAY_BY_NAME("car1_move")
 			_update_player_pos()
 		elif event.as_text_keycode() == "Down" && !paused:
 			player_pos += 1
+			SoundEffectMaster._PLAY_BY_NAME("car1_move")
 			_update_player_pos()
 
 func _get_next_obstacle(left: bool = true) -> Game1Obstacle:
@@ -203,6 +205,7 @@ func _update_player_pos(instant := false):
 	if !instant:
 		player_tween = get_tree().create_tween()
 		player_tween.tween_property(main_character, "position:y", pos_y, 0.4 * player_fract)
+		player_tween.finished.connect(func(): SoundEffectMaster._STOP_SOUNDS())
 	else:
 		main_character.position.y = pos_y
 	

@@ -6,14 +6,18 @@ static var instance: GameMaster
 
 @export var game_scenes: Array[PackedScene]
 @export var shop_items: Array[ShopItem]
-@export_group("Localization", "loc_")
+
+@onready var timer: Timer = $Timer
 
 var tin_cans := 0:
 	set(can):
 		if can >= 0:
 			tin_cans = can
 			OptionsAndSaveManager._RETURN_CURR_SAVEDATA().cans = can
-var in_game := false
+var in_game := false:
+	set(b):
+		in_game = b
+		timer.paused = !in_game
 var boosted_drops = false
 
 var local_strings_names
@@ -23,6 +27,8 @@ var local_strings_names
 func _ready() -> void:
 	instance = self
 	await OSM.load_done
+	timer.start()
+	timer.paused = true
 
 func _input(event: InputEvent) -> void:
 	if OS.is_debug_build():
@@ -34,3 +40,7 @@ func _input(event: InputEvent) -> void:
 
 func _change_current_scene(id: int):
 	get_tree().change_scene_to_packed(game_scenes[id])
+
+func _autosave():
+	print("Autosave! - ", Time.get_datetime_string_from_system())
+	OptionsAndSaveManager._SAVE()

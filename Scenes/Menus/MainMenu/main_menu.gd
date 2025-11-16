@@ -5,11 +5,13 @@ class_name MainMenu extends Control
 @export var rotation_speed: Curve
 @onready var bg: TextureRect = $BG
 
-@onready var master_slider: HSlider = $SubMenuMargin/Options/VBoxContainer/LabelSlider/HSlider
-@onready var save_button: Button = $SubMenuMargin/Options/VBoxContainer/SaveButton
+@onready var master_slider: HSlider = $SubMenuMargin/Options/VBoxContainer/MasterSlider/HSlider
+@onready var sounds_slider: HSlider = $SubMenuMargin/Options/VBoxContainer/SoundsSlider/HSlider
+@onready var music_slider: HSlider = $SubMenuMargin/Options/VBoxContainer/MusicSlider/HSlider
+@onready var save_button: Button = $SubMenuMargin/Options/VBoxContainer/HBoxContainer/SaveButton
 @onready var language_section: OptionButton = $SubMenuMargin/Options/VBoxContainer/LanguageSelect
 @onready var mobile_ui_toggle: CheckButton = $SubMenuMargin/Options/VBoxContainer/MobileUI
-@onready var reset_button: Button = $SubMenuMargin/Options/VBoxContainer/ResetButton
+@onready var reset_button: Button = $SubMenuMargin/Options/VBoxContainer/HBoxContainer/ResetButton
 
 var t: float:
 	set(x):
@@ -25,6 +27,8 @@ var input_queue: Array[String] = []
 func _ready():
 	var data := OptionsAndSaveManager.instance.data
 	master_slider.value = data.master
+	sounds_slider.value = data.sounds
+	music_slider.value = data.music
 	mobile_ui_toggle.button_pressed = data.mobile_toggle
 	SoundEffectMaster._PLAY_MUSIC_BY_NAME("main_theme")
 	# Create locals items
@@ -39,6 +43,7 @@ func _process(delta):
 	bg.rotation += rotation_speed.sample(t) * delta / 4
 	
 func _start_button_pressed():
+	_save_request()
 	GameMaster.instance.in_game = true
 	GameMaster.instance._change_current_scene(1)
 
@@ -61,8 +66,16 @@ func _input(event: InputEvent):
 				GameMaster.instance.tin_cans += 10
 
 func _master_slider(value: float):
-	print(linear_to_db(value))
+	print("Master: ", linear_to_db(value))
 	OptionsAndSaveManager.instance.data._update_master_value(value)
+
+func _sounds_slider(value: float):
+	print("Sounds: ", linear_to_db(value))
+	OptionsAndSaveManager.instance.data._update_sounds_value(value)
+
+func _music_slider(value: float):
+	print("Music: ", linear_to_db(value))
+	OptionsAndSaveManager.instance.data._update_music_value(value)
 
 func _save_request():
 	print("Save")
@@ -83,10 +96,12 @@ func _localize():
 	$ButtonsMargin/BttnMargin/BttnContainer/Start.text = LocalizationMaster._GET_VALUE("start")
 	$ButtonsMargin/BttnMargin/BttnContainer/Options.text = LocalizationMaster._GET_VALUE("options")
 	$ButtonsMargin/BttnMargin/BttnContainer/Saves.text = LocalizationMaster._GET_VALUE("change_save")
-	$SubMenuMargin/Options/VBoxContainer/LabelSlider/Label.text = LocalizationMaster._GET_VALUE("master_bus")
-	$SubMenuMargin/Options/VBoxContainer/ResetButton.text = LocalizationMaster._GET_VALUE("reset_options")
-	$SubMenuMargin/Options/VBoxContainer/MobileUI.text = LocalizationMaster._GET_VALUE("mobile_toggle")
-	$SubMenuMargin/Options/VBoxContainer/SaveButton.text = LocalizationMaster._GET_VALUE("manual_save")
+	$SubMenuMargin/Options/VBoxContainer/MasterSlider/Label.text = LocalizationMaster._GET_VALUE("master_bus")
+	$SubMenuMargin/Options/VBoxContainer/SoundsSlider/Label.text = LocalizationMaster._GET_VALUE("sounds_bus")
+	$SubMenuMargin/Options/VBoxContainer/MusicSlider/Label.text = LocalizationMaster._GET_VALUE("music_bus")
+	reset_button.text = LocalizationMaster._GET_VALUE("reset_options")
+	mobile_ui_toggle.text = LocalizationMaster._GET_VALUE("mobile_toggle")
+	save_button.text = LocalizationMaster._GET_VALUE("manual_save")
 	for i in language_section.item_count:
 		var sufix = LocalizationMaster.LOCALIATION_NAMES[i as LocalizationMaster.LOCAL]
 		language_section.set_item_text(i, LocalizationMaster._GET_VALUE("lang_%s" % sufix))
