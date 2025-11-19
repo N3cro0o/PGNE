@@ -4,6 +4,8 @@ var available_parking_spaces: Array[Game2ParkingSpace]
 var used_parking_spaces: Array[Game2ParkingSpace]
 var active_parking_lot: Game2ParkingSpace = null
 
+signal end_of_space
+
 func _ready():
 	for child in get_children():
 		available_parking_spaces.push_back(child)
@@ -14,7 +16,7 @@ func _get_random_child(remove := false) -> Game2ParkingSpace:
 	var rand_index = randi_range(0, available_parking_spaces.size() - 1)
 	var child = available_parking_spaces[rand_index]
 	if remove:
-		available_parking_spaces.pop_at(rand_index)
+		used_parking_spaces.push_back(available_parking_spaces.pop_at(rand_index))
 	return child
 
 func _activate_random_lot():
@@ -27,4 +29,6 @@ func _activate_random_lot():
 
 func _check_available_lots():
 	if available_parking_spaces.size() == 0:
-		print("ADD LOGIC _check_available_lots")
+		end_of_space.emit()
+		for i in range(0, used_parking_spaces.size()):
+			available_parking_spaces.push_back(used_parking_spaces.pop_back())

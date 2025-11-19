@@ -35,5 +35,7 @@
 	"resume_minigame": "Return to game",
 	"quit_minigame": "Quit minigame",
 	"replay_minigame": "Play again!",
-	"cans_score_%s": "Collected %d tin cans"
+	"cans_score_%s": "Collected %d tin cans",
+	"shop": "Shop",
+	"game_center": "'Study' center",
 }

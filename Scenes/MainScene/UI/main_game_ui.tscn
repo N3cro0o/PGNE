@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://yb8q31wlggo8"]
+[gd_scene load_steps=9 format=3 uid="uid://yb8q31wlggo8"]
 
 [ext_resource type="Script" uid="uid://dcw8fpqkpkwmr" path="res://Scenes/MainScene/UI/main_game_ui.gd" id="1_a1mol"]
 [ext_resource type="Texture2D" uid="uid://dhm3vnppmxebd" path="res://Sprites/GUI/icon_cog.png" id="2_a1mol"]
 [ext_resource type="Texture2D" uid="uid://d1jpehcy4oc0p" path="res://Sprites/MinigamesTextures/Matiz/matiz_face.png" id="3_6eet8"]
 [ext_resource type="Shader" uid="uid://2e474cs8hblb" path="res://Shaders/blur.gdshader" id="4_i503h"]
+[ext_resource type="Texture2D" uid="uid://c3fgsv3lcs0cf" path="res://Sprites/Temp/ja_kiedy_parking.jpg" id="5_i503h"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a1mol"]
 font_size = 38
@@ -259,7 +260,7 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="GamingMenu/Margin/Body"]
 layout_mode = 2
-text = "GAMINGO !!!!!!!!!"
+text = "STUDY CENTER"
 label_settings = SubResource("LabelSettings_a1mol")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -302,12 +303,11 @@ flat = true
 autowrap_mode = 2
 
 [node name="PasatParking" type="TextureRect" parent="GamingMenu/Margin/Body/Games"]
-visible = false
 modulate = Color(1, 1, 1, 0.76862746)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource("3_6eet8")
+texture = ExtResource("5_i503h")
 expand_mode = 1
 stretch_mode = 6
 
@@ -329,18 +329,21 @@ flat = true
 autowrap_mode = 2
 
 [node name="ColorRect2" type="ColorRect" parent="GamingMenu/Margin/Body/Games"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(1, 0, 1, 1)
 
 [node name="ColorRect3" type="ColorRect" parent="GamingMenu/Margin/Body/Games"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(1, 0, 1, 1)
 
 [node name="ColorRect4" type="ColorRect" parent="GamingMenu/Margin/Body/Games"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -372,5 +375,5 @@ text = "Leave"
 [connection signal="pressed" from="UI/Main/ColorRect/MainMargin/VBox/HomeOfficeBttn" to="." method="_home_office_press"]
 [connection signal="pressed" from="Shop/Margin/Body/QuitButton" to="." method="shop_quit"]
 [connection signal="pressed" from="GamingMenu/Margin/Body/Games/MissAHole/Button" to="." method="game_button_press" binds= [0]]
-[connection signal="pressed" from="GamingMenu/Margin/Body/Games/PasatParking/Button" to="." method="game_button_press" binds= [0]]
+[connection signal="pressed" from="GamingMenu/Margin/Body/Games/PasatParking/Button" to="." method="game_button_press" binds= [1]]
 [connection signal="pressed" from="GamingMenu/Margin/Body/QuitButton" to="." method="game_center_quit"]

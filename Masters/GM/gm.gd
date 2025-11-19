@@ -6,7 +6,7 @@ static var instance: GameMaster
 
 @export var game_scenes: Array[PackedScene]
 @export var shop_items: Array[ShopItem]
-
+@export var threading_check = false
 @onready var timer: Timer = $Timer
 
 var tin_cans := 0:

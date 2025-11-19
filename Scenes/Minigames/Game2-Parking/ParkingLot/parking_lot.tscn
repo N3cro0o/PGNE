@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dqbuupacqs4k2"]
 
-[ext_resource type="Script" uid="uid://b86pg7sv40cbg" path="res://Scenes/Minigames/Game2-Parking/Scripts/parking_space.gd" id="1_xh5ix"]
+[ext_resource type="Script" uid="uid://b86pg7sv40cbg" path="res://Scenes/Minigames/Game2-Parking/ParkingLot/parking_space.gd" id="1_xh5ix"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xh5ix"]
 
@@ -8,6 +8,7 @@
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_xh5ix")
+color = Color(1, 1, 1, 0.60784316)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_xh5ix")

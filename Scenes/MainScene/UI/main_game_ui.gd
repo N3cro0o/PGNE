@@ -103,6 +103,8 @@ func _localize():
 	$UI/Main/ColorRect/MainMargin/VBox/SraczBttn.text = LocalizationMaster._GET_VALUE("bathroom")
 	$UI/Main/ColorRect/MainMargin/VBox/Jadlobttn.text = LocalizationMaster._GET_VALUE("dinner")
 	$UI/Main/ColorRect/MainMargin/VBox/HomeOfficeBttn.text = LocalizationMaster._GET_VALUE("home_office")
+	$Shop/Margin/Body/Label.text = LocalizationMaster._GET_VALUE("shop")
+	$GamingMenu/Margin/Body/Label.text = LocalizationMaster._GET_VALUE("game_center")
 	var game_bttn_text = $GamingMenu/Margin/Body/Games/MissAHole/Button.text
 	$GamingMenu/Margin/Body/Games/MissAHole/Button.text = LocalizationMaster._GET_VALUE(game_bttn_text)
 	game_bttn_text = $GamingMenu/Margin/Body/Games/PasatParking/Button.text

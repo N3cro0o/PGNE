@@ -65,6 +65,7 @@ var end_game := false:
 		$MainCharacter/Shadow.stop()
 		$Menu/GameOver/MarginContainer/VBoxContainer/VBoxContainer/CansLabel.text = can_label % collected_cans
 		game_over_menu.visible = true
+		SoundEffectMaster._STOP_SOUNDS()
 var paused := false:
 	set(new_paused):
 		paused = new_paused
@@ -104,7 +105,6 @@ func _input(event: InputEvent):
 	if event is InputEventKey && event.is_pressed() && !end_game:
 		if event.as_text_keycode() == "Escape" && !end_game:
 			paused = !paused
-			#GameMaster.instance._change_current_scene(1)
 		if event.as_text_keycode() == "Up" && !paused:
 			player_pos -= 1
 			SoundEffectMaster._PLAY_BY_NAME("car1_move")

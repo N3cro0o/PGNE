@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5f6uohkk4tll"]
+[gd_scene load_steps=9 format=3 uid="uid://c5f6uohkk4tll"]
 
 [ext_resource type="Script" uid="uid://25owo84btmqr" path="res://Scenes/Minigames/Game2-Parking/game_2.gd" id="1_2314o"]
 [ext_resource type="PackedScene" uid="uid://d4a633tkg7xxr" path="res://Scenes/Minigames/Game1-Pasat/MinigameMenus/minigame_menus.tscn" id="2_7guc8"]
@@ -9,9 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://uqay77umqwji" path="res://Scenes/Minigames/Game2-Parking/Vehicle/SoldatVehicle/soldat_vehicle.tscn" id="7_dyqd5"]
 [ext_resource type="Script" uid="uid://cxjhwcnjwfqri" path="res://Scenes/Minigames/Game2-Parking/Scripts/obstacles_controller.gd" id="7_pw5xo"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pw5xo"]
-size = Vector2(616, 456)
-
 [node name="game_2" type="Node2D" node_paths=PackedStringArray("veh_current_vehicle")]
 script = ExtResource("1_2314o")
 veh_vehicle_speed = 110.0
@@ -19,17 +16,11 @@ veh_vehicle_rotation = 2.3
 veh_vehicle_parking_rotation = 6.0
 veh_current_vehicle = NodePath("Vehicles/CurrVehicle")
 
-[node name="KillArea" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea"]
-position = Vector2(320, 240)
-shape = SubResource("RectangleShape2D_pw5xo")
-
 [node name="Menu" parent="." instance=ExtResource("2_7guc8")]
 
 [node name="BG" type="Sprite2D" parent="."]
 z_index = -5
-position = Vector2(320, 240)
+position = Vector2(325.5, 242.99998)
 texture = ExtResource("3_xy1ii")
 
 [node name="ParkingSpaces" type="Node2D" parent="."]
@@ -37,102 +28,102 @@ position = Vector2(0, -1)
 script = ExtResource("2_j6cc2")
 
 [node name="PV1" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(43, 58)
+position = Vector2(49, 59)
 
 [node name="PV2" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(138, 58)
+position = Vector2(144, 59)
 
 [node name="PV3" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(226, 58)
+position = Vector2(232, 59)
 
 [node name="PV4" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(320, 57)
+position = Vector2(326, 58)
 
 [node name="PV5" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(413, 192)
+position = Vector2(419, 193)
 
 [node name="PV6" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(549, 192)
+position = Vector2(555, 193)
 
 [node name="PV7" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(90, 58)
+position = Vector2(96, 59)
 
 [node name="PV8" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(503, 57)
+position = Vector2(509, 58)
 
 [node name="PV9" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(598, 58)
+position = Vector2(604, 59)
 
 [node name="PV10" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(550, 58)
+position = Vector2(556, 59)
 
 [node name="PV11" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(272, 58)
+position = Vector2(278, 59)
 
 [node name="PV12" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(366, 58)
+position = Vector2(372, 59)
 
 [node name="PV13" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(413, 58)
+position = Vector2(419, 59)
 
 [node name="PV14" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(43, 192)
+position = Vector2(49, 193)
 
 [node name="PV15" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(90, 192)
+position = Vector2(96, 193)
 
 [node name="PV16" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(226, 192)
+position = Vector2(232, 193)
 
 [node name="PV17" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(272, 192)
+position = Vector2(278, 193)
 
 [node name="PV18" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(320, 192)
+position = Vector2(326, 193)
 
 [node name="PV19" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(366, 192)
+position = Vector2(372, 193)
 
 [node name="PV20" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(598, 192)
+position = Vector2(604, 193)
 
 [node name="PV21" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(413, 263)
+position = Vector2(419, 264)
 
 [node name="PV22" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(549, 263)
+position = Vector2(555, 264)
 
 [node name="PV23" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(43, 263)
+position = Vector2(49, 264)
 
 [node name="PV24" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(90, 263)
+position = Vector2(96, 264)
 
 [node name="PV25" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(226, 263)
+position = Vector2(232, 264)
 
 [node name="PV26" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(272, 263)
+position = Vector2(278, 264)
 
 [node name="PV27" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(320, 263)
+position = Vector2(326, 264)
 
 [node name="PV28" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(366, 263)
+position = Vector2(372, 264)
 
 [node name="PV29" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(598, 263)
+position = Vector2(604, 264)
 
 [node name="PH1" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(320, 441)
+position = Vector2(326, 442)
 lot_type = 0
 
 [node name="PH2" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(83, 441)
+position = Vector2(89, 442)
 lot_type = 0
 
 [node name="PH3" parent="ParkingSpaces" instance=ExtResource("3_j6cc2")]
-position = Vector2(558, 441)
+position = Vector2(564, 442)
 lot_type = 0
 
 [node name="Vehicles" type="Node2D" parent="."]
@@ -165,6 +156,7 @@ position = Vector2(-281, 355)
 path_line = NodePath("../Line3")
 move_priority = 2.0
 finish_line_reset = true
+speed = 200
 
 [node name="Line3" type="Line2D" parent="Obstacles"]
 points = PackedVector2Array(-153, 361, 841, 361)
@@ -174,18 +166,13 @@ width = 0.0
 position = Vector2(149, 179)
 path_line = NodePath("../Line4")
 move_priority = 7.0
+speed = 200
 
 [node name="Line4" type="Line2D" parent="Obstacles"]
 points = PackedVector2Array(145, 220, 145, 400, 210, 400, 210, 550, 440, 550, 440, 370, 600, 370)
 width = 0.0
 
-[node name="StartTimer" type="Timer" parent="."]
-wait_time = 0.5
-
-[connection signal="area_exited" from="KillArea" to="." method="_check_collision"]
 [connection signal="retry_press" from="Menu" to="." method="_replay"]
 [connection signal="return_press" from="Menu" to="." method="_return_to_game"]
 [connection signal="unpause_press" from="Menu" to="." method="_unpause_button"]
-[connection signal="end_of_space" from="ParkingSpaces" to="." method="_reset_parking"]
 [connection signal="hit_other_vehicle" from="Vehicles/CurrVehicle" to="." method="_check_collision"]
-[connection signal="timeout" from="StartTimer" to="." method="_enable_movement"]

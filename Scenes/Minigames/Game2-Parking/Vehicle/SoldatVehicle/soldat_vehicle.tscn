@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://uqay77umqwji"]
+
+[ext_resource type="Script" uid="uid://bx2411pc3c2sm" path="res://Scenes/Minigames/Game2-Parking/Vehicle/SoldatVehicle/soldat_vehicle.gd" id="1_jelof"]
+[ext_resource type="Texture2D" uid="uid://duqegayel7q61" path="res://Sprites/MinigamesTextures/Pasat/pasat_spritesheet.png" id="2_4nkqj"]
+[ext_resource type="Texture2D" uid="uid://dbc60ijheke73" path="res://Sprites/MinigamesTextures/Pasat/puma_car.png" id="3_l0skb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6cc2"]
+atlas = ExtResource("2_4nkqj")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xy1ii"]
+radius = 13.0
+height = 54.0
+
+[node name="Soldat" type="Area2D"]
+collision_layer = 5
+script = ExtResource("1_jelof")
+
+[node name="Wheel" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("AtlasTexture_j6cc2")
+
+[node name="Car" type="Sprite2D" parent="."]
+texture = ExtResource("3_l0skb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_xy1ii")
+
+[node name="SoldatLookup" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SoldatLookup"]
+polygon = PackedVector2Array(-20, 30, 20, 30, 20, -25, 120, -70, 120, -150, -120, -150, -120, -70, -20, -25)
+
+[connection signal="area_entered" from="." to="." method="_on_vehicle_hit"]
+[connection signal="area_entered" from="SoldatLookup" to="." method="_soldat_lookup_logic"]
+[connection signal="area_exited" from="SoldatLookup" to="." method="_soldat_reset"]

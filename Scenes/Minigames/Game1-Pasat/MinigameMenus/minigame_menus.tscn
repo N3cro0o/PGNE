@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://d4a633tkg7xxr"]
+[gd_scene load_steps=2 format=3 uid="uid://d4a633tkg7xxr"]
+
+[ext_resource type="Script" uid="uid://b7fye8i5s0h5r" path="res://Scenes/Minigames/Game1-Pasat/MinigameMenus/minigame_menus.gd" id="1_6yaqc"]
 
 [node name="Menu" type="Control"]
 z_index = 50
@@ -6,6 +8,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 640.0
 offset_bottom = 480.0
+script = ExtResource("1_6yaqc")
 
 [node name="Pause" type="ColorRect" parent="."]
 visible = false
@@ -108,3 +111,8 @@ text = "replay_minigame"
 layout_mode = 2
 size_flags_horizontal = 4
 text = "quit_minigame"
+
+[connection signal="pressed" from="Pause/MarginContainer/VBoxContainer/Unpause" to="." method="on_unpause_button_press"]
+[connection signal="pressed" from="Pause/MarginContainer/VBoxContainer/ReturnToMainGame" to="." method="on_return_button_press"]
+[connection signal="pressed" from="GameOver/MarginContainer/VBoxContainer/Replay" to="." method="on_retry_button_press"]
+[connection signal="pressed" from="GameOver/MarginContainer/VBoxContainer/ReturnToMainGame" to="." method="on_return_button_press"]
