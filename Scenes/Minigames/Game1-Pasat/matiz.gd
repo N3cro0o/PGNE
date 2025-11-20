@@ -148,6 +148,7 @@ func _obstacle_hit(area: Area2D):
 		end_game = true
 
 func _can_signal(value: int):
+	SoundEffectMaster._PLAY_BY_NAME("game_can")
 	collected_cans += value
 
 func _reset_obstacle(area: Area2D):
@@ -219,14 +220,4 @@ func _return_to_game():
 	GameMaster.instance._change_current_scene(1)
 
 func _localize():
-	$Menu/Pause/MarginContainer/VBoxContainer/VBoxContainer/Label.text = LocalizationMaster._GET_VALUE("paused_label_1")
-	$Menu/Pause/MarginContainer/VBoxContainer/VBoxContainer/Label2.text = LocalizationMaster._GET_VALUE("paused_label_2")
-	$Menu/GameOver/MarginContainer/VBoxContainer/VBoxContainer/Label.text = LocalizationMaster._GET_VALUE("gameover_label_1")
 	can_label = LocalizationMaster._GET_VALUE("cans_score_%s")
-	var bttn_text = $Menu/Pause/MarginContainer/VBoxContainer/Unpause.text
-	$Menu/Pause/MarginContainer/VBoxContainer/Unpause.text = LocalizationMaster._GET_VALUE(bttn_text)
-	bttn_text = $Menu/Pause/MarginContainer/VBoxContainer/ReturnToMainGame.text
-	$Menu/Pause/MarginContainer/VBoxContainer/ReturnToMainGame.text = LocalizationMaster._GET_VALUE(bttn_text)
-	$Menu/GameOver/MarginContainer/VBoxContainer/ReturnToMainGame.text = LocalizationMaster._GET_VALUE(bttn_text)
-	bttn_text = $Menu/GameOver/MarginContainer/VBoxContainer/Replay.text
-	$Menu/GameOver/MarginContainer/VBoxContainer/Replay.text = LocalizationMaster._GET_VALUE(bttn_text)

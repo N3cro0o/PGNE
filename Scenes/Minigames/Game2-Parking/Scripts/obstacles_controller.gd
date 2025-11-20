@@ -20,6 +20,7 @@ func _get_random_child(remove := false) -> Game2MovingVehicle:
 
 func _activate_random_vehicle():
 	var vehicle = _get_random_child(true)
+	used_parking_spaces.push_back(vehicle)
 	if vehicle != null:
 		vehicle.active = true
 	_check_available_vehicles() 

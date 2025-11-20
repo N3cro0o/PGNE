@@ -36,6 +36,8 @@ var number_of_soldats = 0:
 		print(name, ' ', number_of_soldats)
 var stop_timer := 0.0
 
+signal hit_other_vehicle_better(area, b)
+
 func _ready():
 	_set_active(false)
 
@@ -72,7 +74,7 @@ func _process(delta):
 
 func _on_vehicle_hit(area: Area2D):
 	if active:
-		hit_other_vehicle.emit(area)
+		hit_other_vehicle_better.emit(area, true)
 
 func _soldat_lookup_logic(area: Area2D):
 	if area is Game2MovingVehicle:

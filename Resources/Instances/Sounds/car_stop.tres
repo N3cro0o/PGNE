@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SoundHolder" load_steps=3 format=3 uid="uid://esy58b1ncne4"]
+
+[ext_resource type="Script" uid="uid://bjggp4jlp3wv7" path="res://Resources/Script/sound_holder.gd" id="1_tv66f"]
+[ext_resource type="AudioStream" uid="uid://lxc1s2x6vxg5" path="res://Audio/Sounds/170744_car _stop.mp3" id="2_tv66f"]
+
+[resource]
+script = ExtResource("1_tv66f")
+name = "car2_stop"
+stream = ExtResource("2_tv66f")
+bus = "Sounds"
+metadata/_custom_type_script = "uid://bjggp4jlp3wv7"

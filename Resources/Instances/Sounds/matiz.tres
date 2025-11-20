@@ -8,4 +8,5 @@ script = ExtResource("1_571k1")
 name = "car1_move"
 stream = ExtResource("2_y61fm")
 volume = -7.5
+bus = "Sounds"
 metadata/_custom_type_script = "uid://bjggp4jlp3wv7"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5f6uohkk4tll"]
+[gd_scene load_steps=11 format=3 uid="uid://c5f6uohkk4tll"]
 
 [ext_resource type="Script" uid="uid://25owo84btmqr" path="res://Scenes/Minigames/Game2-Parking/game_2.gd" id="1_2314o"]
 [ext_resource type="PackedScene" uid="uid://d4a633tkg7xxr" path="res://Scenes/Minigames/Game1-Pasat/MinigameMenus/minigame_menus.tscn" id="2_7guc8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://hlbl6vvqcvdn" path="res://Sprites/MinigamesTextures/ParkingLot/parking_bg.png" id="3_xy1ii"]
 [ext_resource type="PackedScene" uid="uid://uqay77umqwji" path="res://Scenes/Minigames/Game2-Parking/Vehicle/SoldatVehicle/soldat_vehicle.tscn" id="7_dyqd5"]
 [ext_resource type="Script" uid="uid://cxjhwcnjwfqri" path="res://Scenes/Minigames/Game2-Parking/Scripts/obstacles_controller.gd" id="7_pw5xo"]
+[ext_resource type="SpriteFrames" uid="uid://c1tyo3qsfdool" path="res://Sprites/MinigamesTextures/Mr.Torgue/boom.tres" id="9_vb3kl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pw5xo"]
 size = Vector2(616, 456)
@@ -181,6 +182,13 @@ width = 0.0
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="BoomSprites" type="AnimatedSprite2D" parent="."]
+visible = false
+scale = Vector2(2.3333333, 2.3333333)
+sprite_frames = ExtResource("9_vb3kl")
+frame = 16
+frame_progress = 1.0
 
 [connection signal="area_exited" from="KillArea" to="." method="_check_collision"]
 [connection signal="retry_press" from="Menu" to="." method="_replay"]

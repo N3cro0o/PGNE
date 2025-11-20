@@ -15,6 +15,7 @@ const SPAWN_POINT = Vector2(630, 350)
 @onready var game_over_menu: ColorRect = $Menu/GameOver
 @onready var obstacles: Game2ObstacleController = $Obstacles
 @onready var start_timer: Timer = $StartTimer
+@onready var boom_sprites: AnimatedSprite2D = $BoomSprites
 
 var movement_vec := Vector2.UP
 var next_car: Game2Vehicle
@@ -27,7 +28,15 @@ var finished_parkings: int = 0:
 var end_game := false:
 	set(new_end_game):
 		end_game = new_end_game
+		if EXPLOSIONS && randf() > 0.9:
+			boom_sprites.visible = true
+			SoundEffectMaster._PLAY_BY_NAME("boom")
+			boom_sprites.play("default")
+		else:
+			SoundEffectMaster._PLAY_BY_NAME("car2_stop")
 		for car in obstacles.used_parking_spaces:
+			car.game_speed = 0.0
+		for car in obstacles.available_parking_spaces:
 			car.game_speed = 0.0
 		@warning_ignore("integer_division")
 		GameMaster.instance.tin_cans += finished_parkings / 2
@@ -57,6 +66,7 @@ var resets := 0:
 			for car in obstacles.used_parking_spaces:
 				car.speed *= 1.1
 var has_moved := false
+var EXPLOSIONS = false
 
 func _ready():
 	veh_current_vehicle.active = true
@@ -67,7 +77,8 @@ func _ready():
 	for child: Game2ParkingSpace in parking_spaces.get_children():
 		child.player_inside.connect(_on_player_entering_parking)
 	for child: Game2MovingVehicle in obstacles.available_parking_spaces:
-		child.hit_other_vehicle.connect(_check_collision)
+		child.hit_other_vehicle_better.connect(_check_collision)
+	_localize()
 
 func _input(event: InputEvent):
 	if event is InputEventKey && !end_game:
@@ -83,6 +94,8 @@ func _input(event: InputEvent):
 				veh_current_vehicle._change_wheels(false)
 
 func _process(delta):
+	if veh_current_vehicle != null:
+		boom_sprites.position = veh_current_vehicle.position
 	if !paused && !end_game && enable_movement:
 		if Input.is_key_pressed(KEY_UP):
 			veh_current_vehicle.position += movement_vec.rotated(veh_current_vehicle.rotation) * veh_vehicle_speed * delta
@@ -128,6 +141,8 @@ func _get_next_vehicle():
 	else:
 		_thread_spawn_new_vehicle()
 	parking_spaces._activate_random_lot()
+	if finished_parkings != 0 && finished_parkings % 2 == 0:
+		SoundEffectMaster._PLAY_BY_NAME("game_can")
 	start_timer.start()
 
 func _on_player_entering_parking(type: Game2ParkingSpace.TYPE):
@@ -149,8 +164,9 @@ func _reset_parking():
 		child.queue_free()
 	resets += 1
 
-func _check_collision(area: Area2D):
+func _check_collision(area: Area2D, soldat := false):
 	if area == veh_current_vehicle && has_moved:
+		EXPLOSIONS = soldat
 		end_game = true
 
 func _unpause_button():
@@ -168,3 +184,6 @@ func _return_to_game():
 
 func _enable_movement():
 	enable_movement = true
+
+func _localize():
+	can_label = LocalizationMaster._GET_VALUE("cans_score_%s")

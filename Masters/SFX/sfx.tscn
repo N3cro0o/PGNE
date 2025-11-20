@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://clmsvcke4s3pi"]
+[gd_scene load_steps=12 format=3 uid="uid://clmsvcke4s3pi"]
 
 [ext_resource type="Script" uid="uid://dgp787y5gbgff" path="res://Masters/SFX/sfx.gd" id="1_o3wpr"]
 [ext_resource type="Script" uid="uid://bjggp4jlp3wv7" path="res://Resources/Script/sound_holder.gd" id="2_yvcpy"]
@@ -8,10 +8,13 @@
 [ext_resource type="Resource" uid="uid://djbfcbpxupmw0" path="res://Resources/Instances/Sounds/eating.tres" id="5_f2wq5"]
 [ext_resource type="Resource" uid="uid://c7fuhkgs45yw3" path="res://Resources/Instances/Music/main_theme.tres" id="5_w1p37"]
 [ext_resource type="Resource" uid="uid://c8dsxwva7vv0g" path="res://Resources/Instances/Sounds/matiz.tres" id="6_pdjn0"]
+[ext_resource type="Resource" uid="uid://bampi0drhgl45" path="res://Resources/Instances/Sounds/explosion.tres" id="7_x0x60"]
+[ext_resource type="Resource" uid="uid://esy58b1ncne4" path="res://Resources/Instances/Sounds/car_stop.tres" id="8_gq3ym"]
+[ext_resource type="Resource" uid="uid://dsbhak23nrl11" path="res://Resources/Instances/Sounds/can_get.tres" id="9_sojh0"]
 
 [node name="SFX" type="Node2D"]
 script = ExtResource("1_o3wpr")
-sounds_array = Array[ExtResource("2_yvcpy")]([ExtResource("3_jbqgf"), ExtResource("4_w1p37"), ExtResource("5_f2wq5"), ExtResource("6_pdjn0")])
+sounds_array = Array[ExtResource("2_yvcpy")]([ExtResource("3_jbqgf"), ExtResource("4_w1p37"), ExtResource("5_f2wq5"), ExtResource("6_pdjn0"), ExtResource("7_x0x60"), ExtResource("8_gq3ym"), ExtResource("9_sojh0")])
 music_array = Array[ExtResource("4_3rwq1")]([ExtResource("5_w1p37")])
 
 [node name="Sounds" type="AudioStreamPlayer" parent="."]
