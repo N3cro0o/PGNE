@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b82tq8ij7xd3a"]
+[gd_scene load_steps=9 format=3 uid="uid://b82tq8ij7xd3a"]
 
 [ext_resource type="Script" uid="uid://b6qd6w2gkyoj6" path="res://Scenes/Menus/MainMenu/main_menu.gd" id="1_tb3ri"]
 [ext_resource type="Theme" uid="uid://c3ndx4odidiae" path="res://Resources/Themes/main_ui_theme.tres" id="1_yobja"]
@@ -14,6 +14,8 @@ point_count = 3
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gphap"]
 shader = ExtResource("3_fy1kh")
 shader_parameter/lod = 2.52400011989
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yobja"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -94,6 +96,8 @@ alignment = 0
 
 [node name="Saves" type="Button" parent="ButtonsMargin/BttnMargin/BttnContainer"]
 layout_mode = 2
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_yobja")
+disabled = true
 text = "Change Save"
 alignment = 0
 

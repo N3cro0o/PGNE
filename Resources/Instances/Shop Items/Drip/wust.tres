@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ShopItemDrip" load_steps=3 format=3 uid="uid://c87q225kjnk5x"]
+
+[ext_resource type="Script" uid="uid://xjjgko327jl7" path="res://Resources/Script/shop_item_drip.gd" id="1_kbdja"]
+[ext_resource type="Texture2D" uid="uid://jayr086f4e5b" path="res://Sprites/Logo/WUST/logo_wust.png" id="1_ysp68"]
+
+[resource]
+script = ExtResource("1_kbdja")
+debug_group_name = "jacket"
+debug_name = "wust_jacket"
+name = "PWR"
+cost = 50
+description = "Legendary jacket of a Demon. Luckily his perspective ranking is top tier!"
+image = ExtResource("1_ysp68")
+metadata/_custom_type_script = "uid://xjjgko327jl7"

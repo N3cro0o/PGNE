@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ShopItemDrip" load_steps=3 format=3 uid="uid://dei2qmhh6rfl4"]
+
+[ext_resource type="Script" uid="uid://xjjgko327jl7" path="res://Resources/Script/shop_item_drip.gd" id="1_7y4jr"]
+[ext_resource type="Texture2D" uid="uid://bwwgtjyiexdm5" path="res://Sprites/ShopItems/dream_pasat.png" id="1_kem6o"]
+
+[resource]
+script = ExtResource("1_7y4jr")
+debug_group_name = "game1_car"
+debug_name = "game1_pasat"
+name = "Dream car, Pasat B5"
+cost = 101
+description = "Your dream car, our dream car"
+image = ExtResource("1_kem6o")
+metadata/_custom_type_script = "uid://xjjgko327jl7"

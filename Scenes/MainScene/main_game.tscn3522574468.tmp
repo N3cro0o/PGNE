@@ -40,11 +40,10 @@ font_size = 32
 shader = ExtResource("9_i5ls4")
 shader_parameter/lod = 1.750000083125
 
-[node name="MainGame" type="Node2D" node_paths=PackedStringArray("buttons")]
+[node name="MainGame" type="Node2D"]
 script = ExtResource("1_jt1fx")
 game_backgrounds = Array[ExtResource("2_ybnbx")]([ExtResource("3_ncjln"), ExtResource("4_hl25e"), ExtResource("5_i5ls4"), ExtResource("6_oqfto")])
 random_ziutek_line = SubResource("Curve_ktdyc")
-buttons = [NodePath("GameTabs/Akademyk/AMiMir"), NodePath("GameTabs/Sracz/Piss&Shit"), NodePath("GameTabs/Jadlodalnia/ToggleBridge"), NodePath("GameTabs/HomeOffice/Relaxxxxx"), NodePath("GameTabs/HomeOffice/Gaming")]
 
 [node name="GameTabs" type="TabContainer" parent="."]
 z_index = 50

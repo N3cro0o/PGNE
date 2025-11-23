@@ -1,9 +1,13 @@
-[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://bn0nl6t6c1qub"]
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://bn0nl6t6c1qub"]
 
 [ext_resource type="Texture2D" uid="uid://c0dixal4u73u0" path="res://Sprites/MinigamesTextures/Matiz/matiz_1.png" id="1_4gyon"]
 [ext_resource type="Texture2D" uid="uid://3b3scc1lotk7" path="res://Sprites/MinigamesTextures/Matiz/matiz_2.png" id="2_0esv4"]
 [ext_resource type="Texture2D" uid="uid://sdhjrxhnjl23" path="res://Sprites/MinigamesTextures/Matiz/matiz_3.png" id="3_ok0tq"]
 [ext_resource type="Texture2D" uid="uid://dg5m3epmti6yj" path="res://Sprites/MinigamesTextures/Matiz/matiz_4.png" id="4_rokup"]
+[ext_resource type="Texture2D" uid="uid://du0wkplb55hst" path="res://Sprites/MinigamesTextures/PasatRemex/pasat_1.png" id="5_ow21q"]
+[ext_resource type="Texture2D" uid="uid://3h7qacs240yr" path="res://Sprites/MinigamesTextures/PasatRemex/pasat_2.png" id="6_flyyo"]
+[ext_resource type="Texture2D" uid="uid://cvcj5yko635ik" path="res://Sprites/MinigamesTextures/PasatRemex/pasat_3.png" id="7_yeyxo"]
+[ext_resource type="Texture2D" uid="uid://bfsse8yf51ny3" path="res://Sprites/MinigamesTextures/PasatRemex/pasat_4.png" id="8_cj2rs"]
 
 [resource]
 animations = [{
@@ -22,5 +26,22 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ow21q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_flyyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_yeyxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_cj2rs")
+}],
+"loop": true,
+"name": &"pasat",
 "speed": 30.0
 }]

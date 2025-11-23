@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="EventHolder" load_steps=2 format=3 uid="uid://cdlrhqdl35qah"]
+
+[ext_resource type="Script" uid="uid://b3imy18rwqv5l" path="res://Resources/Script/event_holder.gd" id="1_q1fhm"]
+
+[resource]
+script = ExtResource("1_q1fhm")
+debug_name = "turn_off_heater"
+debug_event_label_name = "cold_label"
+block_for = 343.0
+metadata/_custom_type_script = "uid://b3imy18rwqv5l"

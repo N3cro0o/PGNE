@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EventHolder" load_steps=2 format=3 uid="uid://dvm8lq62g38c7"]
+
+[ext_resource type="Script" uid="uid://b3imy18rwqv5l" path="res://Resources/Script/event_holder.gd" id="1_aivot"]
+
+[resource]
+script = ExtResource("1_aivot")
+debug_name = "sink_leak"
+debug_event_label_name = "leak_label"
+which = 1
+block_for = 250.0
+metadata/_custom_type_script = "uid://b3imy18rwqv5l"

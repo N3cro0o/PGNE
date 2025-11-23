@@ -1,0 +1,37 @@
+[gd_scene load_steps=9 format=3 uid="uid://clv6j5btgn21h"]
+
+[ext_resource type="Texture2D" uid="uid://c2w6f5tkaf3mw" path="res://Sprites/Student/student.png" id="1_52cr8"]
+[ext_resource type="Script" uid="uid://dudfcgd5y5mmw" path="res://Scenes/Student/student.gd" id="1_c4bkp"]
+[ext_resource type="Texture2D" uid="uid://wr0xbyp6uwow" path="res://Sprites/Student/pwr_jacket.png" id="2_fdisi"]
+[ext_resource type="Texture2D" uid="uid://ccpcxvgftxlfs" path="res://Sprites/Student/normal_eyes.png" id="2_ya5v1"]
+[ext_resource type="Texture2D" uid="uid://seove5hbkw1v" path="res://Sprites/Student/normal_mouth.png" id="3_c4bkp"]
+[ext_resource type="Texture2D" uid="uid://due0s53tvc24f" path="res://Sprites/Student/blue_jacket.png" id="3_sedjy"]
+[ext_resource type="Texture2D" uid="uid://bair1v1ji8sl1" path="res://Sprites/Student/nerve.png" id="4_y0eve"]
+[ext_resource type="Texture2D" uid="uid://dt2dr5xvrylxm" path="res://Sprites/Student/sweat.png" id="5_fdisi"]
+
+[node name="StudentPet" type="Node2D"]
+scale = Vector2(1.25, 1.25)
+script = ExtResource("1_c4bkp")
+misc_drip_sprites = {
+"lumpex_jacket": ExtResource("3_sedjy"),
+"wust_jacket": ExtResource("2_fdisi")
+}
+
+[node name="Student" type="Sprite2D" parent="."]
+texture = ExtResource("1_52cr8")
+
+[node name="Eye" type="Sprite2D" parent="."]
+texture = ExtResource("2_ya5v1")
+
+[node name="Mouth" type="Sprite2D" parent="."]
+texture = ExtResource("3_c4bkp")
+
+[node name="Nerve" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_y0eve")
+
+[node name="Sweat" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("5_fdisi")
+
+[node name="Drip" type="Sprite2D" parent="."]

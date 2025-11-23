@@ -76,10 +76,9 @@ position = Vector2(85, 0)
 
 [node name="Main" type="AnimatedSprite2D" parent="MainCharacter"]
 rotation = 3.1415927
-scale = Vector2(0.58, -0.646)
+scale = Vector2(0.56, -0.624)
 sprite_frames = ExtResource("4_bn1ma")
 autoplay = "default"
-frame_progress = 0.5837015
 
 [node name="Shadow" type="AnimatedSprite2D" parent="MainCharacter"]
 self_modulate = Color(0, 0, 0, 1)
@@ -89,7 +88,6 @@ rotation = 3.1415927
 scale = Vector2(0.58, -0.646)
 sprite_frames = ExtResource("4_bn1ma")
 autoplay = "default"
-frame_progress = 0.5837015
 
 [node name="Sprite2D" type="Sprite2D" parent="MainCharacter"]
 visible = false

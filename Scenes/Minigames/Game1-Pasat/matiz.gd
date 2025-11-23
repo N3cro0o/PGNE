@@ -84,6 +84,15 @@ func _ready():
 	player_pos = 0
 	time_in_game = 0
 	_update_player_pos(true)
+	if PlayerMaster.instance.wearing_items.get("game1_pasat", 0) == 2:
+		$MainCharacter/Main.animation = "pasat"
+		$MainCharacter/Main.position = Vector2(4, 32)
+		$MainCharacter/Main.rotation = 0.0
+		$MainCharacter/Main.scale = Vector2(2, 2)
+		$MainCharacter/Shadow.animation = "pasat"
+		$MainCharacter/Shadow.position = Vector2(2, 30)
+		$MainCharacter/Shadow.rotation = 0.0
+		$MainCharacter/Shadow.scale = Vector2(2.1, 2.1)
 	var coll_shape = stop_obstacles.get_child(0).shape as WorldBoundaryShape2D
 	coll_shape.distance = -obs_stop_thresh * game_speed
 	timer_left.start(dif_timer_speed)

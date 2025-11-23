@@ -39,9 +39,9 @@ var end_game := false:
 		for car in obstacles.available_parking_spaces:
 			car.game_speed = 0.0
 		@warning_ignore("integer_division")
-		GameMaster.instance.tin_cans += finished_parkings / 2
+		GameMaster.instance.tin_cans += finished_parkings / 6
 		@warning_ignore("integer_division")
-		$Menu/GameOver/MarginContainer/VBoxContainer/VBoxContainer/CansLabel.text = can_label % (finished_parkings / 2)
+		$Menu/GameOver/MarginContainer/VBoxContainer/VBoxContainer/CansLabel.text = can_label % (finished_parkings / 6)
 		game_over_menu.visible = true
 var paused := false:
 	set(new_paused):
@@ -51,7 +51,7 @@ var paused := false:
 			for car in obstacles.used_parking_spaces:
 				car.game_speed = 0.1
 			@warning_ignore("integer_division")
-			$Menu/Pause/MarginContainer/VBoxContainer/CansLabel.text = can_label % (finished_parkings / 2)
+			$Menu/Pause/MarginContainer/VBoxContainer/CansLabel.text = can_label % (finished_parkings / 6)
 		elif !end_game:
 			for car in obstacles.used_parking_spaces:
 				car.game_speed = 1.0
@@ -71,8 +71,11 @@ var EXPLOSIONS = false
 func _ready():
 	veh_current_vehicle.active = true
 	veh_current_vehicle._randomize_color()
-	vehicle_thread = Thread.new()
-	vehicle_thread.start(_thread_spawn_new_vehicle)
+	if GameMaster.instance.threading_check:
+		vehicle_thread = Thread.new()
+		vehicle_thread.start(_thread_spawn_new_vehicle)
+	else:
+		_thread_spawn_new_vehicle()
 	parking_spaces._activate_random_lot()
 	for child: Game2ParkingSpace in parking_spaces.get_children():
 		child.player_inside.connect(_on_player_entering_parking)
@@ -141,7 +144,7 @@ func _get_next_vehicle():
 	else:
 		_thread_spawn_new_vehicle()
 	parking_spaces._activate_random_lot()
-	if finished_parkings != 0 && finished_parkings % 2 == 0:
+	if finished_parkings != 0 && finished_parkings % 6 == 0:
 		SoundEffectMaster._PLAY_BY_NAME("game_can")
 	start_timer.start()
 
@@ -174,12 +177,12 @@ func _unpause_button():
 
 func _replay():
 	@warning_ignore("integer_division")
-	GameMaster.instance.tin_cans += finished_parkings / 2
+	GameMaster.instance.tin_cans += finished_parkings / 6
 	GameMaster.instance._change_current_scene(3)
 
 func _return_to_game():
 	@warning_ignore("integer_division")
-	GameMaster.instance.tin_cans += finished_parkings / 2
+	GameMaster.instance.tin_cans += finished_parkings / 6
 	GameMaster.instance._change_current_scene(1)
 
 func _enable_movement():

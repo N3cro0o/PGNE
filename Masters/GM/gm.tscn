@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://mmngd5sx0u81"]
+[gd_scene load_steps=19 format=3 uid="uid://mmngd5sx0u81"]
 
 [ext_resource type="Script" uid="uid://dkpyhuovmf1wa" path="res://Masters/GM/gm.gd" id="1_2s2pk"]
 [ext_resource type="PackedScene" uid="uid://b82tq8ij7xd3a" path="res://Scenes/Menus/MainMenu/main_menu.tscn" id="2_vtv0w"]
@@ -11,13 +11,25 @@
 [ext_resource type="Resource" uid="uid://cx75mstcwtd6p" path="res://Resources/Instances/Shop Items/hotdog.tres" id="7_7toyk"]
 [ext_resource type="Resource" uid="uid://nk4l0x0ns0fm" path="res://Resources/Instances/Shop Items/pizza.tres" id="8_fc3s1"]
 [ext_resource type="Resource" uid="uid://bhfyxn532ugbr" path="res://Resources/Instances/Shop Items/burtella.tres" id="9_ty7db"]
+[ext_resource type="Script" uid="uid://xjjgko327jl7" path="res://Resources/Script/shop_item_drip.gd" id="12_mriqn"]
+[ext_resource type="Resource" uid="uid://c87q225kjnk5x" path="res://Resources/Instances/Shop Items/Drip/wust.tres" id="13_0mw4j"]
+[ext_resource type="Resource" uid="uid://b58a4jx7nuk0u" path="res://Resources/Instances/Shop Items/Drip/lumpex_jacket.tres" id="14_0mw4j"]
+[ext_resource type="Script" uid="uid://b3imy18rwqv5l" path="res://Resources/Script/event_holder.gd" id="15_nk1lw"]
+[ext_resource type="Resource" uid="uid://dei2qmhh6rfl4" path="res://Resources/Instances/Shop Items/Drip/pasat_dream_car.tres" id="15_w3nm6"]
+[ext_resource type="Resource" uid="uid://cdlrhqdl35qah" path="res://Resources/Instances/Events/heater.tres" id="16_w3nm6"]
+[ext_resource type="Resource" uid="uid://dvm8lq62g38c7" path="res://Resources/Instances/Events/leak.tres" id="17_lgxxb"]
 
 [node name="GM" type="Node2D"]
 script = ExtResource("1_2s2pk")
 game_scenes = Array[PackedScene]([ExtResource("2_vtv0w"), ExtResource("3_50g81"), ExtResource("4_7toyk"), ExtResource("5_fc3s1")])
 shop_items = Array[ExtResource("4_fd3iw")]([ExtResource("5_wjyef"), ExtResource("6_rab1n"), ExtResource("7_7toyk"), ExtResource("8_fc3s1"), ExtResource("9_ty7db")])
+shop_drip_items = Array[ExtResource("12_mriqn")]([ExtResource("13_0mw4j"), ExtResource("14_0mw4j"), ExtResource("15_w3nm6")])
+game_events = Array[ExtResource("15_nk1lw")]([ExtResource("16_w3nm6"), ExtResource("17_lgxxb")])
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 30.0
 
+[node name="Timer2" type="Timer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_autosave"]
+[connection signal="timeout" from="Timer2" to="." method="_spawn_event"]

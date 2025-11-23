@@ -1,10 +1,66 @@
-[gd_scene load_steps=9 format=3 uid="uid://yb8q31wlggo8"]
+[gd_scene load_steps=30 format=3 uid="uid://yb8q31wlggo8"]
 
 [ext_resource type="Script" uid="uid://dcw8fpqkpkwmr" path="res://Scenes/MainScene/UI/main_game_ui.gd" id="1_a1mol"]
 [ext_resource type="Texture2D" uid="uid://dhm3vnppmxebd" path="res://Sprites/GUI/icon_cog.png" id="2_a1mol"]
 [ext_resource type="Texture2D" uid="uid://d1jpehcy4oc0p" path="res://Sprites/MinigamesTextures/Matiz/matiz_face.png" id="3_6eet8"]
 [ext_resource type="Shader" uid="uid://2e474cs8hblb" path="res://Shaders/blur.gdshader" id="4_i503h"]
 [ext_resource type="Texture2D" uid="uid://c3fgsv3lcs0cf" path="res://Sprites/Temp/ja_kiedy_parking.jpg" id="5_i503h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_i503h"]
+line_spacing = 5.0
+font_size = 36
+font_color = Color(1, 0, 0.24780053, 1)
+shadow_size = 2
+shadow_color = Color(0, 0, 0, 0.47500002)
+shadow_offset = Vector2(2, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lyey3"]
+bg_color = Color(0, 0.11764706, 0.4745098, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehu87"]
+bg_color = Color(0, 0.11764706, 0.4745098, 0.3019608)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i503h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nmycl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oa4rv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nmycl"]
+bg_color = Color(0.16862746, 0.19215687, 0.003921569, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_resr4"]
+bg_color = Color(0.16862746, 0.19215687, 0.003921569, 0.3019608)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ehu87"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_resr4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_weg12"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0pa7"]
+bg_color = Color(0.019607844, 0.21960784, 0, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_weg12"]
+bg_color = Color(0.019607844, 0.21960784, 0, 0.3019608)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m0a4m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7qoci"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5l14l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m75vp"]
+bg_color = Color(0.35686275, 0, 0.05490196, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t40da"]
+bg_color = Color(0.35686275, 0, 0.05490196, 0.3019608)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8whmg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bqf0r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_duv6g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a1mol"]
 font_size = 38
@@ -23,6 +79,7 @@ offset_right = 640.0
 offset_bottom = 480.0
 mouse_filter = 2
 script = ExtResource("1_a1mol")
+event_label_speed = 200.0
 
 [node name="UI" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -117,12 +174,64 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.5
 mouse_filter = 2
+theme_override_constants/separation = 0
 
 [node name="Blud" type="Control" parent="UI/Main"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 5.0
 mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="UI/Main/Blud"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.27058825)
+
+[node name="Box" type="VBoxContainer" parent="UI/Main/Blud/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="UI/Main/Blud/ColorRect/Box"]
+layout_mode = 2
+text = "Your student is busy!
+Please wait:"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="UI/Main/Blud/ColorRect/Box"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="EventText" type="ColorRect" parent="UI/Main/Blud"]
+clip_children = 1
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 115.0
+offset_right = -115.0
+offset_bottom = 47.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="UI/Main/Blud/EventText"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 797.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "asd"
+label_settings = SubResource("LabelSettings_i503h")
+vertical_alignment = 1
 
 [node name="ColorRect" type="ColorRect" parent="UI/Main"]
 layout_mode = 2
@@ -149,16 +258,31 @@ theme_override_constants/separation = 10
 [node name="AkademykBttn" type="Button" parent="UI/Main/ColorRect/MainMargin/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/pressed = SubResource("StyleBoxFlat_lyey3")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ehu87")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_i503h")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nmycl")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_oa4rv")
 text = "Akademyk"
 
 [node name="SraczBttn" type="Button" parent="UI/Main/ColorRect/MainMargin/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nmycl")
+theme_override_styles/hover = SubResource("StyleBoxFlat_resr4")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_ehu87")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_resr4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_weg12")
 text = "Wychodek"
 
 [node name="Jadlobttn" type="Button" parent="UI/Main/ColorRect/MainMargin/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l0pa7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_weg12")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_m0a4m")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7qoci")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5l14l")
 text = "Jadłodalnia"
 autowrap_mode = 3
 
@@ -166,6 +290,11 @@ autowrap_mode = 3
 editor_description = "home office is a place for every student retard to chill out, play league and jack off"
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_styles/pressed = SubResource("StyleBoxFlat_m75vp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t40da")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_8whmg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bqf0r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_duv6g")
 text = "Home Office"
 autowrap_mode = 2
 
@@ -203,7 +332,7 @@ vertical_alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="Shop/Margin/Body"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 5
 
 [node name="ShopTabs" type="TabContainer" parent="Shop/Margin/Body"]
 layout_mode = 2
@@ -227,6 +356,7 @@ metadata/_tab_index = 1
 
 [node name="Box" type="VBoxContainer" parent="Shop/Margin/Body/ShopTabs/Drip"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="QuitButton" type="Button" parent="Shop/Margin/Body"]
 layout_mode = 2

@@ -13,6 +13,7 @@ radius = 13.0
 height = 54.0
 
 [node name="Soldat" type="Area2D"]
+modulate = Color(1, 1, 1, 0)
 collision_layer = 5
 script = ExtResource("1_jelof")
 

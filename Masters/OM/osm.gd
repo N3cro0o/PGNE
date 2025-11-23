@@ -1,5 +1,7 @@
 class_name OptionsAndSaveManager extends Node2D
+
 static var instance: OptionsAndSaveManager
+static var READY: bool = false
 
 const SAVE_PATH = "user://save%d/"
 const SAVE_FILE = "pwr.wust"
@@ -57,14 +59,24 @@ class SavefileData extends Node:
 	var bladder := 100.0
 	var stress := 100.0
 	var hunger := 100.0
+	var wait_time := 0.0
+	var event_debug_name: String = ""
+	var in_event := false
 	
 	var fridge := {
-		"bread": 3,
+		"bread": 5,
 		"piwko": 2,
 		"hotdog": 0,
-		"pizza": 1,
+		"pizza": 0,
 		"burtella": 0
 	}
+	
+	var wardrobe: Dictionary
+	
+	func _init():
+		for item in GameMaster.instance.shop_drip_items:
+			var item_name = item.debug_name
+			wardrobe.set(item_name, 0)
 	
 	func _to_dictionary() -> Dictionary:
 		return {
@@ -74,6 +86,10 @@ class SavefileData extends Node:
 			"stress": stress,
 			"hunger": hunger,
 			"fridge": fridge,
+			"wait_time": wait_time,
+			"wardrobe": wardrobe,
+			"event_debug_name": event_debug_name,
+			"in_event": in_event,
 		}
 	
 	static func _from_dictionary(dict: Dictionary) -> SavefileData:
@@ -91,6 +107,14 @@ class SavefileData extends Node:
 			output.hunger = dict["hunger"]
 		if keys.find("fridge") != -1:
 			output.fridge = dict["fridge"]
+		if keys.find("wardrobe") != -1:
+			output.wardrobe = dict["wardrobe"]
+		if keys.find("wait_time") != -1:
+			output.wait_time = dict["wait_time"]
+		if keys.find("event_debug_name") != -1:
+			output.event_debug_name = dict["event_debug_name"]
+		if keys.find("in_event") != -1:
+			output.in_event = dict["in_event"]
 		return output
 
 static var SAVE_THREAD: Thread
@@ -121,6 +145,7 @@ static func _RETURN_CURR_SAVEDATA() -> SavefileData:
 
 func _ready():
 	instance = self
+	READY = true
 	for i in 3:
 		game_datas.push_back(SavefileData.new())
 	data = SaveOptionData.new(1.0)
@@ -198,4 +223,8 @@ func _setup_data():
 	p_inst.bladder = data_to_load.bladder
 	p_inst.stress = data_to_load.stress
 	p_inst.hunger = data_to_load.hunger
+	p_inst.wait_time = data_to_load.wait_time
+	p_inst.wearing_items = data_to_load.wardrobe
+	p_inst.in_event = data_to_load.in_event
+	p_inst._load_event(data_to_load.event_debug_name)
 	PlayerMaster.fridge = data_to_load.fridge

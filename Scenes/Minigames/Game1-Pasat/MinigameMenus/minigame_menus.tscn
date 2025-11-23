@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.11764706, 0.11764706, 0.11764706, 0.24705882)
+color = Color(0.11774104, 0.11774104, 0.11774104, 0.4)
 
 [node name="MarginContainer" type="MarginContainer" parent="Pause"]
 layout_mode = 1
@@ -39,12 +39,14 @@ theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="Pause/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
 text = "Game is paused"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="Pause/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 24
 text = "...but is still running!"
 horizontal_alignment = 1
@@ -61,6 +63,7 @@ text = "quit_minigame"
 
 [node name="CansLabel" type="Label" parent="Pause/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 2
 text = "Lorem ipsum papaj cardinale"
 horizontal_alignment = 1
 
@@ -72,7 +75,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.6901961, 0.0627451, 0.078431375, 0.24705882)
+color = Color(0.4665867, 0.027843285, 0.03803554, 0.4)
 
 [node name="MarginContainer" type="MarginContainer" parent="GameOver"]
 layout_mode = 1
@@ -93,12 +96,14 @@ theme_override_constants/separation = 0
 
 [node name="Label" type="Label" parent="GameOver/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 48
 text = "Game Over!"
 horizontal_alignment = 1
 
 [node name="CansLabel" type="Label" parent="GameOver/MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/outline_size = 2
 text = "Lorem ipsum papaj cardinale"
 horizontal_alignment = 1
 
