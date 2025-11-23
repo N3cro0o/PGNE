@@ -23,6 +23,12 @@ var line_time := 0.0:
 		else:
 			line_time = x
 
+var food_0_text
+var food_1_text
+var food_2_text
+var food_3_text
+var food_4_text
+
 #endregion
 
 func _physics_process(delta: float) -> void:
@@ -116,7 +122,7 @@ func _wait_update_buttons(b: bool):
 func update_fridge():
 	if PlayerMaster.fridge["bread"] > 0:
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Chlib.visible = true
-		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Chlib.text = "Stale bread %d" % PlayerMaster.fridge["bread"]
+		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Chlib.text = "%s %d" % [food_0_text, PlayerMaster.fridge["bread"]]
 	else:
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Chlib.visible = false
 		
@@ -127,19 +133,19 @@ func update_fridge():
 		#$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Piwko.visible = false
 	if PlayerMaster.fridge["hotdog"] > 0:
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Hotdoggers.visible = true
-		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Hotdoggers.text = "Hot-dog %d" % PlayerMaster.fridge["hotdog"]
+		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Hotdoggers.text = "%s %d" % [food_2_text, PlayerMaster.fridge["hotdog"]]
 	else:
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Hotdoggers.visible = false
 		
 	if PlayerMaster.fridge["pizza"] > 0:
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/PizzaZabka.visible = true
-		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/PizzaZabka.text = "Pizza pepperoni %d" % PlayerMaster.fridge["pizza"]
+		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/PizzaZabka.text = "%s %d" % [food_3_text, PlayerMaster.fridge["pizza"]]
 	else:
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/PizzaZabka.visible = false
 		
 	if PlayerMaster.fridge["burtella"] > 0:
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Burtella.visible = true
-		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Burtella.text = "Burtella %d" % PlayerMaster.fridge["burtella"]
+		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Burtella.text = "%s %d" % [food_4_text, PlayerMaster.fridge["burtella"]]
 	else:
 		$GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Burtella.visible = false
 
@@ -198,7 +204,10 @@ func _loduwa_button(id: int):
 		# Secrets
 		if item.debug_name == "pizza":
 			print("PIZZA PEPPERONI")
-			SoundEffectMaster._PLAY_BY_NAME("pizza_pepperoni")
+			if randf() < 0.3:
+				SoundEffectMaster._PLAY_BY_NAME("pizza_pepperoni")
+			else:
+				SoundEffectMaster._PLAY_BY_NAME("eat")
 		else:
 			SoundEffectMaster._PLAY_BY_NAME("eat")
 		# Update
@@ -257,13 +266,9 @@ func _get_event(event: EventHolder):
 	menus._update_event_label(event.debug_event_label_name, true)
 
 func _localize():
-	var food_0 = $GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Chlib
-	var food_1 = $GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Piwko
-	var food_2 = $GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Hotdoggers
-	var food_3 = $GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/PizzaZabka
-	var food_4 = $GameTabs/Jadlodalnia/LoduwaMenu/ColorRect/Margin/Box/Content/ContentVBox/Burtella
-	food_0.text = LocalizationMaster._GET_VALUE("chlib")
-	food_1.text = LocalizationMaster._GET_VALUE("piwko")
-	food_2.text = LocalizationMaster._GET_VALUE("hotdog")
-	food_3.text = LocalizationMaster._GET_VALUE("pizza")
-	food_4.text = LocalizationMaster._GET_VALUE("burtella")
+	$GameTabs/Akademyk/Shop.text = LocalizationMaster._GET_VALUE("shop_game")
+	food_0_text = LocalizationMaster._GET_VALUE("bread")
+	food_1_text = LocalizationMaster._GET_VALUE("piwko")
+	food_2_text = LocalizationMaster._GET_VALUE("hotdog")
+	food_3_text = LocalizationMaster._GET_VALUE("pizza")
+	food_4_text = LocalizationMaster._GET_VALUE("burtella")
