@@ -158,6 +158,12 @@ func _load_all():
 	_setup_data()
 	load_done.emit()
 
+func _reset_all():
+	_reset_gamedata(curr_savefile)
+	_reset_optionfile()
+	_setup_data()
+	load_done.emit()
+
 #region Option funcs
 
 func _load_optionfile():
@@ -165,6 +171,10 @@ func _load_optionfile():
 		data = _get_optionfile()
 	else:
 		data = _store_optionfile()
+
+func _reset_optionfile():
+	data = SaveOptionData.new(1.0)
+	data = _store_optionfile()
 
 func _get_optionfile() -> SaveOptionData:
 	var loaded_data = FileAccess.get_file_as_bytes(OPTIONS_FILE)
@@ -192,6 +202,10 @@ func _load_gamedata_all():
 			game_datas[i] = _get_gamedata(i)
 		else:
 			game_datas[i] = _store_gamedata(i)
+
+func _reset_gamedata(id: int):
+	game_datas[id] = SavefileData.new()
+	game_datas[id] = _store_gamedata(id)
 
 func _get_gamedata(id: int) -> SavefileData:
 	var path = (SAVE_PATH % id) + SAVE_FILE

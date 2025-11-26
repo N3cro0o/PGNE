@@ -200,4 +200,5 @@ text = "Manual save"
 [connection signal="value_changed" from="SubMenuMargin/Options/VBoxContainer/MusicSlider/HSlider" to="." method="_music_slider"]
 [connection signal="item_selected" from="SubMenuMargin/Options/VBoxContainer/LanguageSelect" to="." method="_select_lang"]
 [connection signal="toggled" from="SubMenuMargin/Options/VBoxContainer/MobileUI" to="." method="_mobile_toggle"]
+[connection signal="pressed" from="SubMenuMargin/Options/VBoxContainer/HBoxContainer/ResetButton" to="." method="_reset_button"]
 [connection signal="pressed" from="SubMenuMargin/Options/VBoxContainer/HBoxContainer/SaveButton" to="." method="_save_request"]

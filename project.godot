@@ -14,6 +14,7 @@ config/name="PGNE"
 run/main_scene="uid://b82tq8ij7xd3a"
 config/features=PackedStringArray("4.5", "Mobile")
 boot_splash/bg_color=Color(0.6901961, 0.12156863, 0.03529412, 1)
+boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/image="uid://jayr086f4e5b"
 config/icon="res://Sprites/Temp/icon.svg"

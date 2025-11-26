@@ -63,7 +63,7 @@ func _input(event: InputEvent):
 			if input_queue == ["Up", "Up", "Down", "Down", "Left", 
 				"Right", "Left", "Right"]:
 				print("kretex")
-				GameMaster.instance.tin_cans += 10
+				GameMaster.instance.tin_cans += 69
 
 func _master_slider(value: float):
 	print("Master: ", linear_to_db(value))
@@ -91,6 +91,9 @@ func _select_lang(id: int):
 
 func _mobile_toggle(value: bool):
 	OptionsAndSaveManager.instance.data.mobile_toggle = value
+
+func _reset_button():
+	OptionsAndSaveManager.instance._reset_all()
 
 func _localize():
 	$ButtonsMargin/BttnMargin/BttnContainer/Start.text = LocalizationMaster._GET_VALUE("start")
